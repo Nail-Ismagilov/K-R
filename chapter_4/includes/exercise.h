@@ -2,18 +2,29 @@
 #define __EXERCISE_H__
 
 void getarray(char s[], int len);
+
 /* getarray: stores input to an array and prints it
  *
- * @parameter char s[] - array where the input should be tored 
- * @parameter int len - size of the array  */
+ * @param char s[] - array where the input should be tored 
+ * @param int len - size of the array  
+ **/
+
 
 
 void print_array(char arr[]);
-/*print_array: prints array to a terminal
+
+/* print_array: prints array to a terminal
  *
- *@parameter arr - an array which should be printed
+ * @param arr - an array which should be printed
  * */
 
 
+uint8_t strrindex(char s[], char t[]);
+
+/* strrindex: returns position of righmost occurence t in s 
+ *
+ * @param s main string 
+ * @param t string that will be searched in s
+ */
 
 #endif
