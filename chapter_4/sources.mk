@@ -1,6 +1,6 @@
 # Source file
 
-ifeq ($CHAPTER, 4)
+ifeq ($(CHAPTER), 4)
 SOURCES = src/chapter4/main.c \
 	  src/chapter4/create_array.c \
 	  src/chapter4/strrindex.c \

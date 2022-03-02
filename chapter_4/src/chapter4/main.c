@@ -9,6 +9,8 @@ int main()
 {
 	char s[SIZE], t[SIZE];
 	int8_t i;
+	double d;
+
 	printf("Hey give me the first sequnce: " );
 	getarray(s, SIZE);
 
@@ -16,8 +18,11 @@ int main()
 	getarray(t, SIZE);
 
 	
-	i = strrindex(s,t);
-	printf("'t' meets 's' in position %d\n", i);	
+	//i = strrindex(s,t);
+	//printf("'t' meets 's' in position %d\n", i);	
 	
+	d = atof('s');
+	printf("The double is: %f\n", d);
+
 	return (0);
 }
