@@ -14,7 +14,7 @@ void getarray (char s[], int lim){
 	int i;
 	char c;
 
-	for (i=0; i < lim-1 && (c = getchar()) != '0' && c!='\n'; i++){
+	for (i=0; i < lim-1 && (c = getchar()) != '\n'; i++){
 	s[i] = c;
 	}
 
