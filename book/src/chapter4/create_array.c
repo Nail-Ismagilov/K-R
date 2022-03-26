@@ -4,9 +4,9 @@
 void print_array(char arr[])
 {
 	int i;
-	// printf("\n");
+	printf("+++The given array: ");
 	for (i = 0; arr[i] != '\0'; i++)
-		printf("+++The given array: %c", arr[i]);
+		printf("%c", arr[i]);
 	printf("\n");
 }
 

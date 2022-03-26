@@ -27,16 +27,11 @@ uint8_t strrindex(char s[], char t[]);
  * @param t string that will be searched in s
  */
 
-double atof(char s);
+double atof(char s[]);
 
 /* atof: converts string to double
  *
  * @param s the string, that should be converted to double
  */
 
-int isdigit(char s[int i]);
-
-/* isdigit: checks if the given character is digit
- * @param s[i] a character, that should be check wheter is digit or not
- */
 #endif
