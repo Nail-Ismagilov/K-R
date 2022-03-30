@@ -11,17 +11,17 @@ int main()
 	int8_t i;
 	double d;
 
-	printf("Hey give me the first sequnce: " );
+	printf("---Hello\n---give me the first array: " );
 	getarray(s, SIZE);
 
-	printf("give me the second sequence: ");
-	getarray(t, SIZE);
+	//printf("give me the second sequence: ");
+	//getarray(t, SIZE);
 
-	
+
 	//i = strrindex(s,t);
-	//printf("'t' meets 's' in position %d\n", i);	
-	
-	d = atof('s');
+	//printf("'t' meets 's' in position %d\n", i);
+
+	d = atof(s);
 	printf("The double is: %f\n", d);
 
 	return (0);

@@ -1,6 +1,9 @@
 #ifndef __EXERCISE_H__
 #define __EXERCISE_H__
 
+#include <stdint.h>
+#include <stdio.h>
+
 void getarray(char s[], int len);
 
 /* getarray: stores input to an array and prints it

@@ -1,14 +1,15 @@
-//#include "exercise.h"
+#include "exercise.h"
 #include <ctype.h>
-#include <stdio.h>
+//#include <stdio.h>
+
 double atof(char s[]){
     double val, power, exp = 1.0;
     int i, sign, eSign, ePos;
-    char sci_n[2] = {'e','-'};
-    char sci_p[2] = {'e','+'};
+    char sci_n[3] = {'e','-','\0'};
+    char sci_p[3] = {'e','+','\0'};
 
     if (strrindex (s, sci_p)) // sign of scientific notation
-    	eSign = 1;
+	eSign = 1;
     else if (strrindex (s, sci_n))
 	eSign = -1;
     else
@@ -28,18 +29,18 @@ double atof(char s[]){
 	    power *= 10;
     }
 
-    if (eSign = -1){
+    if (eSign == -1){
 	i += 2;
-	for(; isdigit(s[i]); i++)
+	for(; (s[i]-'0') > 0; s[i]--)
 		exp /= 10.0;
     }
-    else if(eSign = 1){
+    else if(eSign == 1){
         i += 2;
-	printf("\nposition of i: %d", i); // debugging
-        for(; isdigit(s[i]); i++)
+        for(; (s[i]-'0')>0; s[i]--)
 		exp *= 10.0;
     }
 
-    
+    printf("eSign =: %d \ni = %d\n", eSign, i);
+
     return (sign * val / power * exp);
 }

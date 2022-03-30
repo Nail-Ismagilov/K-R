@@ -1,19 +1,24 @@
-#Compiler Flags
-GCC = gcc
-CPPFLAGS = -Wall -Werror -O0  -g
-TARGET = demo
+#
+# ****Makefile includes switch case CHAPTER*****
+#
+#
+
+include sources.mk
+
+OBJS = $(SOURCES:.c=.o)
+CC = clang #gcc
+CFLAGS = -g -Werror
+TARGET = program
 
 %.o: %.c
-	$(GCC) -C $< $(CPPFLAGS) -o $@
+	$(CC) -c -g $< $(INCLUDES) -o $@
+
+program: $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(TARGET)
+
+#exercise.o: exercise.c create_array.c
+#	gcc -c exercise.c create_array.c #exercise.h 
 
 
-.PHONY: build
-	build: $(TARGET).out
-
-$(TARGET).out: demo.c
-	$(GCC) -C $< $(CPPFLAGS) -o $@
-
-.PHONY: clean
 clean:
-	rm -f demo.out
-
+	rm -f $(OBJS) *.out program
