@@ -1,12 +1,12 @@
 #
-# ****Makefile includes switch case CHAPTER*****
+# ****Makefile includes switch case CHAPTER=* ****
 #
 #
 
 include sources.mk
 
 OBJS = $(SOURCES:.c=.o)
-CC = clang #gcc
+CC = gcc #clang #gcc
 CFLAGS = -g -Werror
 TARGET = program
 

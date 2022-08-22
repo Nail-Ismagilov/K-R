@@ -9,11 +9,11 @@ double atof(char s[]){
     char sci_p[3] = {'e','+','\0'};
 
     if (strrindex (s, sci_p)) // sign of scientific notation
-	eSign = 1;
+	    eSign = 1;
     else if (strrindex (s, sci_n))
-	eSign = -1;
+	    eSign = -1;
     else
-	eSign = 0;
+	    eSign = 0;
 
     for (i = 0; isspace(s[i]); i++) /* skip white space */
 	    ;
@@ -30,7 +30,7 @@ double atof(char s[]){
     }
 
     if (eSign == -1){
-	i += 2;
+	    i += 2;
 	for(; (s[i]-'0') > 0; s[i]--)
 		exp /= 10.0;
     }
@@ -40,7 +40,7 @@ double atof(char s[]){
 		exp *= 10.0;
     }
 
-    printf("eSign =: %d \ni = %d\n", eSign, i);
+    //printf("eSign =: %d \ni = %d\n", eSign, i);
 
     return (sign * val / power * exp);
 }
