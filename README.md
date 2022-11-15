@@ -1,5 +1,4 @@
-# This Git repository is created to solve challenges from 
-# "The C Programming Language" - K&R Second edition
+# This Git repository is created to solve challenges from "The C Programming Language" - K&R Second edition
 
 # Use Cases
 A build system make uses CHAPTER= switch case since 4th chapter
