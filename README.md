@@ -4,7 +4,7 @@
 # Use Cases
 A build system make uses CHAPTER= switch case since 4th chapter
   make all CHAPTER=4
-
 to build necessery chapters solution
+
 to clean all build files
   make clean
