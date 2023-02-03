@@ -9,7 +9,7 @@ make: *** No rule to make target 'all'.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Mon Aug 22 20:29:37 2022
+# Make data base, printed on Sun Oct 16 14:41:54 2022
 
 # Variables
 
@@ -19,14 +19,13 @@ FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 SYSTEMDRIVE = C:
 # environment
 NFAST_HOME = C:\Program Files\nCipher\nfast\
+ 
 # environment
 LC_ALL = C
 # environment
 USERPROFILE = C:\Users\Nail Ismagilov
 # environment
 VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
-# environment
-ZKA_SIG_HOME = C:\Program Files (x86)\REINER SCT\cyberJack
 # environment
 LOCALAPPDATA = C:\Users\Nail Ismagilov\AppData\Local
 # environment
@@ -38,12 +37,11 @@ PROCESSOR_LEVEL = 6
 # environment
 PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
 # default
- 
 MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_31660_INSXFYZYZQKMUYUI
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_21872_DJYDKRJQAHMNLABZ
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -57,7 +55,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Nail Ismagilov\AppData\Roaming\Code\CachedData\e4503b30fc78200f846c62cf8091b76ff5547662
+VSCODE_CODE_CACHE_PATH = C:\Users\Nail Ismagilov\AppData\Roaming\Code\CachedData\d045a5eda657f4d7b676dedbfa7aab8207f8a075
 # environment
 LANG = C
 # default
@@ -72,10 +70,11 @@ NFAST_LOGDIR = C:\ProgramData\nCipher\Log Files
 CONFIGSETROOT = C:\WINDOWS\ConfigSetRoot
 # makefile
 MAKEFLAGS = pqrR
+ 
 # environment
 ONEDRIVE = C:\Users\Nail Ismagilov\OneDrive
 # makefile
-CURDIR := /c/Users/Nail Ismagilov/Documents/Embedded C/K-R
+CURDIR := /c/Users/Nail Ismagilov/OneDrive/Dokumente/Embedded C/K-R
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
@@ -87,7 +86,7 @@ MFLAGS = -pqrR
 # default
 .SHELLFLAGS := -c
 # environment
-!C: = c:\Users\Nail Ismagilov\Documents\Embedded C\K-R
+!C: = c:\Users\Nail Ismagilov\OneDrive\Dokumente\Embedded C\K-R
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # automatic
@@ -99,7 +98,7 @@ MAKEFILE_LIST := Makefile sources.mk
 # environment
 NFAST_KMDATA = C:\ProgramData\nCipher\Key Management Data
 # environment
-VSCODE_PID = 31660
+VSCODE_PID = 21872
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -107,7 +106,10 @@ VSCODE_PID = 31660
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"de","availableLanguages":{"*":"de"},"_languagePackId":"0618824fb9f5769483a7597afd5fbb5e.de","_translationsConfigFile":"C:\\Users\\Nail Ismagilov\\AppData\\Roaming\\Code\\clp\\0618824fb9f5769483a7597afd5fbb5e.de\\tcf.json","_cacheRoot":"C:\\Users\\Nail Ismagilov\\AppData\\Roaming\\Code\\clp\\0618824fb9f5769483a7597afd5fbb5e.de","_resolvedLanguagePackCoreLocation":"C:\\Users\\Nail Ismagilov\\AppData\\Roaming\\Code\\clp\\0618824fb9f5769483a7597afd5fbb5e.de\\e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"C:\\Users\\Nail Ismagilov\\AppData\\Roaming\\Code\\clp\\0618824fb9f5769483a7597afd5fbb5e.de\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"de","availableLanguages":{"*":"de"},"_languagePackId":"0618824fb9f5769483a7597afd5fbb5e.de","_translationsConfigFile":"C:\\Users\\Nail Ismagilov\\AppData\\Roaming\\Code\\clp\\0618824fb9f5769483a7597afd5fbb5e.de\\tcf.json","_cacheRoot":"C:\\Users\\Nail Ismagilov\\AppData\\Roaming\\Code\\clp\\0618824fb9f5769483a7597afd5fbb5e.de","_resolvedLanguagePackCoreLocation":"C:\\Users\\Nail Ismagilov\\AppData\\Roaming\\Code\\clp\\0618824fb9f5769483a7597afd5fbb5e.de\\d045a5eda657f4d7b676dedbfa7aab8207f8a075","_corruptedFile":"C:\\Users\\Nail Ismagilov\\AppData\\Roaming\\Code\\clp\\0618824fb9f5769483a7597afd5fbb5e.de\\corrupted.info","_languagePackSupport":true}
+ 
+# environment
+ONEDRIVECONSUMER = C:\Users\Nail Ismagilov\OneDrive
 # default
 MAKE_HOST := x86_64-pc-msys
 # makefile (from 'Makefile', line 8)
@@ -131,7 +133,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /c/Program Files (x86)/Intel/Intel(R) Management Engine Components/iCLS:/c/Program Files/Intel/Intel(R) Management Engine Components/iCLS:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/c/WINDOWS/System32/OpenSSH:/c/Program Files/Calibre2:/c/Program Files/Microsoft VS Code/bin:/c/Program Files/PuTTY:/mingw64/bin:/mingw64:/usr/bin:/c/Program Files/Git/cmd:/c/Program Files/CMake/bin:/c/Users/Nail Ismagilov/AppData/Local/Microsoft/WindowsApps
+PATH = /c/Program Files (x86)/Intel/Intel(R) Management Engine Components/iCLS:/c/Program Files/Intel/Intel(R) Management Engine Components/iCLS:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/c/WINDOWS/System32/OpenSSH:/c/Program Files/Calibre2:/c/Program Files/Microsoft VS Code/bin:/c/Program Files/PuTTY:/mingw64/bin:/mingw64:/usr/bin:/c/Program Files/Git/cmd:/c/Program Files/CMake/bin:/c/Program Files (x86)/dotnet:/c/Users/Nail Ismagilov/AppData/Local/Microsoft/WindowsApps
 # environment
 COMPUTERNAME = LAPTOP-I6O02NI5
 # default
@@ -163,7 +165,8 @@ GNUMAKEFLAGS :=
 # environment
 OS = Windows_NT
 # makefile
-.DEFAULT_GOAL := program
+.DEFAULT_GOAL := build
+ 
 # default
 MAKE_VERSION := 4.3
 # environment
@@ -195,7 +198,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = /c/Users/NAILIS~1/AppData/Local/Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\4a70b94d2e0e87a949c0175a1a96f87a-1.70.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\4a70b94d2e0e87a949c0175a1a96f87a-1.72.2-main-sock
 # environment
 TERM = xterm-256color
 # default
@@ -219,7 +222,7 @@ CC = gcc
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 142 Stepping 10, GenuineIntel
 # variable set hash-table stats:
-# Load=102/1024=10%, Rehash=0, Collisions=11/135=8%
+# Load=102/1024=10%, Rehash=0, Collisions=14/137=10%
 
 # Pattern-specific Variable Values
 
@@ -227,14 +230,14 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 142 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (device 2153107485, inode 38843546786194455): 10 files, no impossibilities.
+# . (device 2153107485, inode 48132221017624614): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 %.o: %.c
-#  recipe to execute (from 'Makefile', line 14):
+#  recipe to execute (from 'Makefile', line 20):
 	$(CC) -c -g $< $(INCLUDES) -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -243,18 +246,18 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 142 Stepping 10, GenuineIntel
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-23 11:04:01.1522215
+#  Last modified 2022-10-16 14:41:08.4638
 #  File has been updated.
 #  Successfully updated.
 
 clean:
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 24):
-	rm -f $(OBJS) *.out program
+#  recipe to execute (from 'Makefile', line 31):
+	rm -f $(OBJS) *.out $(TARGET).exe
 
- 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
@@ -268,34 +271,40 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-# Not a target:
-sources.mk:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-12 16:06:35.1413128
-#  File has been updated.
-#  Successfully updated.
-
-program:
+build:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 17):
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(TARGET)
+#  recipe to execute (from 'Makefile', line 24):
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(TARGET).exe
+
+# Not a target:
+sources.mk:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-07 18:07:46.7266694
+#  File has been updated.
+#  Successfully updated.
+
+.PHONY: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=7/1024=1%, Rehash=0, Collisions=0/18=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/21=0%
 # VPATH Search Paths
+ 
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 131 B / avg = 7 B
-# current buf: size = 8162 B / used = 131 B / count = 18 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 130 B / avg = 6 B
+# current buf: size = 8162 B / used = 130 B / count = 19 / avg = 6 B
 
-# strcache performance: lookups = 26 / hit rate = 30%
+# strcache performance: lookups = 29 / hit rate = 34%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/26=0%
-# Finished Make data base on Mon Aug 22 20:29:37 2022
+# Load=19/8192=0%, Rehash=0, Collisions=0/29=0%
+# Finished Make data base on Sun Oct 16 14:41:54 2022
 
  

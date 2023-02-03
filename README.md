@@ -3,3 +3,5 @@
 #
 # A build system make uses CHAPTER= switch case since 4th chapter 
 # to build necessery chapters solution
+#
+# for DEBUGGING use TARGETS=debug
