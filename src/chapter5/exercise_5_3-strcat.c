@@ -21,7 +21,6 @@ void strcopy(char *s, char*t, int n)
     while (*s++)
         ;
     s--;
-
     while(n != 0)
     {
        *s = *t;
