@@ -65,4 +65,10 @@ void reverse(char s[]);
  * 
  */
 
+int getint(int *pn);
+/* getint: gets int from the input 
+ * \int *pn  an initial string which should be converted
+ * 
+ */
+
 #endif
