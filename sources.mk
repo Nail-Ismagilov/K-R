@@ -28,6 +28,7 @@ ifeq ($(CHAPTER), 5)
 SOURCES = 	src/chapter5/exercise_5_3-strcat.c \
 			src/chapter5/5_1_getint.c \
 			src/chapter5/getch.c \
+			src/chapter5/5_2_getfloat.c \
 			src/chapter5/main.c
 	  		 
 

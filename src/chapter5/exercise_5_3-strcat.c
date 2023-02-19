@@ -1,17 +1,20 @@
 #include <stdio.h>
 
+int strlen1(char * s)
+{
+    int n = 0;
+    while (*s++)
+        n++;
+    return n;
+}
+
 void strcat1(char *s, char *t)
 {
     while (*s++)
         ;
     s--;
-
-    while(*t != '\0')
-    {
-       *s = *t;
-        s++;
-        t++;
-    }
+    while (*s++ = *t++)
+        ;
 }
 
 void strcopy(char *s, char*t, int n)

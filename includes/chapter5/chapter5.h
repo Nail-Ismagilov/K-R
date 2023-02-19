@@ -67,8 +67,20 @@ void reverse(char s[]);
 
 int getint(int *pn);
 /* getint: gets int from the input 
- * \int *pn  an initial string which should be converted
+ * \param int *pn  a pointer where the result is written
  * 
+ */
+
+char getfloat(char *pn);
+/* getint: gets int from the input 
+ * \param char *pn  an initial string which should be converted
+ * 
+ */
+
+int strlen1(char * s);
+/* strlen1: gets length of string s
+ * \param char *s  an initial string 
+ * \return n the length of the string s
  */
 
 #endif
