@@ -48,13 +48,25 @@ int main()
 
     char s[MAX_LENGTH] = "I love";
     char t[MAX_LENGTH] = " You";
-    int a = 0;
+    
+    char c1[MAX_LENGTH] = "I love You";
+    char c2[MAX_LENGTH] = " You";
 
     strcat1(s, t);
 
     for (int i=0; s[i] != '\0'; i++)
          printf("%c", s[i]);
 
+    printf("\n");
+    if (strend(s, t))
+        printf("T is not at the end of s\n");
+    else
+        printf("T  at the end of s\n");
+
+    if (strend(c1, c2))
+        printf("c2 at the end of c1");
+    else
+        printf("c2 is not at the end of 1");
 
     return 0;
 }

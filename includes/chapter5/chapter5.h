@@ -83,4 +83,17 @@ int strlen1(char * s);
  * \return n the length of the string s
  */
 
+int strcmp (char * s, char * t);
+/* strcmp: compares two strings
+ * \param char *s  first string
+ * \param char *t  second string
+ * \return 0 if s=t, <0 if s<t, >0 if s>t
+ */
+
+int strend (char *s, char *t);
+/* strend: checks if t at the end of s
+ * \param char *s  first string
+ * \param char *t  second string
+ * \return 1 if t at the end of s, 0 otherweise
+ */
 #endif

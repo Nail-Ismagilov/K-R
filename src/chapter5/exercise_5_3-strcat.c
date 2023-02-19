@@ -2,10 +2,10 @@
 
 int strlen1(char * s)
 {
-    int n = 0;
-    while (*s++)
-        n++;
-    return n;
+    char *p = s;
+    while (*p++)
+        ;
+    return p-s;
 }
 
 void strcat1(char *s, char *t)
@@ -31,19 +31,24 @@ void strcopy(char *s, char*t, int n)
     }
 }
 
+int strcmp (char * s, char * t)
+{
+   
+    for (; *s == *t; s++, t++)
+        if (*s == '\0')
+            return 0;
+    return (*s - *t);
+}
+
 int strend (char *s, char *t)
 {
     int ret       = 1;
-    int lengthS   = 0;
-    int lengthT   = 0;
-
+    int lengthT, lengthS;
     /*counting digits in string T*/
-    while (*t++)
-        lengthT++;
+    lengthT = strlen1(t);
     
     /*Counting digits in string s*/
-    while (*s++)
-        lengthS++;
+    lengthS = strlen1(s);
 
     /*check if the first string longer as the string which should be included in*/
     if (lengthS < lengthT)
@@ -52,18 +57,8 @@ int strend (char *s, char *t)
         return ret;
      }   
         
-    s -= lengthT;
-    t -= lengthT;
-
-    while (*s != '\0')
-    {
-        /*check if the elemnt of 's' same as the element of 't*/
-        if (*s++ != *t++)
-        {
-            ret = 0;
-            break;
-        }
-    } 
+    if (strcmp( s +(lengthS - lengthT), t))
+        ret = 0;
 
     return ret;
 }
