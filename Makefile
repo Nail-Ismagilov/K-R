@@ -28,5 +28,5 @@ build: $(OBJS)
 
 .PHONY:clean
 clean: 
-	rm -f $(OBJS) *.out $(TARGET).exe
+	rm -f $(OBJS) *.out $(TARGET).exe src/$(CHAPTER)/*.o src/$(CHAPTER)/*.exe
 

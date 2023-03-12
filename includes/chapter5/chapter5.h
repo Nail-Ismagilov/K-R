@@ -4,9 +4,12 @@
 #include <stdint.h>
 #include <stdio.h>
 
-const unsigned exercise[] = { 0,  1,  2,  3,  4,  5,  6,  7,  8, 9, 
-                             10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-                             20, 21, 22, 23, 24, 25, 26, 27, 28, 29};
+const unsigned exercise[]       =  { 0,  1,  2,  3,  4,  5,  6,  7,  8, 9, 
+                                    10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+                                    20, 21, 22, 23, 24, 25, 26, 27, 28, 29};
+
+
+
 
 unsigned int a = 3;
 
@@ -96,4 +99,14 @@ int strend (char *s, char *t);
  * \param char *t  second string
  * \return 1 if t at the end of s, 0 otherweise
  */
+
+void month_day(int, int, int *, int *);
+/* month_day: set month, day from day of year
+ */
+
+int day_of_year(int year, int month, int day);
+/* day_of_year: set day of year from mont & day
+*/
+
+
 #endif

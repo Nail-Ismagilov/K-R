@@ -74,9 +74,10 @@ int getlines(char s[], int lim){
 
     for (i=0; (c=getchar()) !=EOF && c!='\n'; ++i)    
 	s[i] = c;
-    if (c == '\n') {
-	s[i] = c;
-	++i;
+    if (c == '\n') 
+    {
+        s[i] = c;
+        ++i;
     }
 
     s[i] = '\0';
