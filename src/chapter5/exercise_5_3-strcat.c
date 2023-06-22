@@ -24,10 +24,9 @@ void strcopy(char *s, char*t, int n)
     while (*s++)
         ;
     s--;
-    while(n != 0)
+    while(n-- != 0)
     {
-       *s = *t;
-        s++; t++; n--;
+       *s++ = *t++;
     }
 }
 
@@ -42,7 +41,7 @@ int strcmp (char * s, char * t)
 
 int strend (char *s, char *t)
 {
-    int ret       = 1;
+    int retVal       = 1;
     int lengthT, lengthS;
     /*counting digits in string T*/
     lengthT = strlen1(t);
@@ -53,12 +52,11 @@ int strend (char *s, char *t)
     /*check if the first string longer as the string which should be included in*/
     if (lengthS < lengthT)
      {
-        ret = 0;
-        return ret;
+        retVal = 0;
      }   
         
     if (strcmp( s +(lengthS - lengthT), t))
-        ret = 0;
+        retVal = 0;
 
-    return ret;
+    return retVal;
 }

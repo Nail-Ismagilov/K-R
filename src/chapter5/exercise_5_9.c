@@ -13,7 +13,7 @@ int day_of_year(int year, int month, int day)
     if (month > 12 || month == 0 || day > daytab[leap][month])
         return 0;
     
-    for (;month > 0; --month)
+    for (;month > 0; --m onth)
         day += *p++;
     return day;
 }

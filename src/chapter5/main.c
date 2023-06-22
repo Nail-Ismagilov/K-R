@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "chapter5.h"
-
 #define MAX_LENGTH 50
 #define SIZE       20
 
@@ -17,6 +16,7 @@ void printString (char strin[])
 
 int main()
 {
+/*
 //     printf("\n\n********************************* CHAPTER 5 *********************************\n\n");
 //    // printf("********************************* Exercise %d *********************************\n\n", exercise[a]);
 
@@ -43,9 +43,10 @@ int main()
 
 //     // getfloat(&flNumber);
 //     // printString(flNumber);
-
+*/
 //     /*####### EXERCISE 5-3, 5-4, 5-5, 5-6 #######*/
 
+/*
 //     char s[MAX_LENGTH] = "I love";
 //     char t[MAX_LENGTH] = " You";
     
@@ -70,14 +71,15 @@ int main()
 
 //     return 0;
 // }
-
+*/
     /*####### EXERCISE 5-8 #######*/
+
     int day;
     int pmonth; 
     int pday;
 
-    day = day_of_year(1992, 2, 29);
-    month_day(1992, 366, &pmonth, &pday);
+    day = day_of_year(1991, 2, 29);
+    month_day(1993, 366, &pmonth, &pday);
     printf ("day = %d", day);
     printf("\nMonth: %d, Day: %d", pmonth, pday);
     return 0;

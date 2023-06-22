@@ -29,5 +29,11 @@ void month_day(int year, int yearday, int *pmonth, int *pday)
         *pday = yearday;
         *pmonth = i;
     }
+    else
+    {
+        *pday = NULL;
+        *pmonth = NULL;
+        printf("Wrong data");
+    }
     printf("\n*pday: %d, *pmonth: %d\n", *pday, *pmonth);
 }

@@ -21,7 +21,8 @@ SOURCES = 	src/chapter4/main.c \
 	  		src/chapter4/reverse.c
 
 # Include path
-INCLUDES = -I includes/chapter4
+INCLUDES = -I includes/chapter4 \
+			  includes/chapter5
 endif
 
 ifeq ($(CHAPTER), 5)
