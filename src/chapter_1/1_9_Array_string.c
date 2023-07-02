@@ -73,7 +73,8 @@ int getlines(char s[], int lim){
     int c, i;
 
     for (i=0; (c=getchar()) !=EOF && c!='\n'; ++i)    
-	s[i] = c;
+	    s[i] = c;
+        
     if (c == '\n') 
     {
         s[i] = c;
@@ -93,6 +94,6 @@ void reverse(char s[]) {
     for (c=0; c<(i/2); ++c){
         temp = s[c];
         s[c] = s[i-c-2];
-	s[i-c-2] = temp;
+	    s[i-c-2] = temp;
     }
 }

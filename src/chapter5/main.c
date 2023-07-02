@@ -74,7 +74,7 @@ int main()
 */
     /*####### EXERCISE 5-8 #######*/
 
-    int day;
+     int day;
     int pmonth; 
     int pday;
 
