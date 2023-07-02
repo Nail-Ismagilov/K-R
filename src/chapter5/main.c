@@ -14,7 +14,7 @@ void printString (char strin[])
 
 
 
-int main()
+int main(int argc, char *argv[])
 {
 /*
 //     printf("\n\n********************************* CHAPTER 5 *********************************\n\n");
@@ -73,7 +73,7 @@ int main()
 // }
 */
     /*####### EXERCISE 5-8 #######*/
-
+    /*
      int day;
     int pmonth; 
     int pday;
@@ -82,6 +82,12 @@ int main()
     month_day(1993, 366, &pmonth, &pday);
     printf ("day = %d", day);
     printf("\nMonth: %d, Day: %d", pmonth, pday);
+    */
+    /*####### Command-line Arguments #######*/
+   //printf("%s", argc);
+    while (--argc > 0)
+        printf("%s%s", *++argv, (argc > 1)? " " : "\n");
+    printf("Helo Wrold\n");
     return 0;
 }
 
