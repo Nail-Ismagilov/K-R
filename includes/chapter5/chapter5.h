@@ -41,7 +41,7 @@ void strcopy(char *s, char*t, int n);
  * 
  */
 
-int getlines(char *s);
+int getlines(char *s, int);
 
 /* getlines: gets given from input line and saves in array s
  * \param s[]  an initial string to save input
@@ -108,5 +108,12 @@ int day_of_year(int year, int month, int day);
 /* day_of_year: set day of year from mont & day
 */
 
+char *alloc (int n);
+/* allocation a buffer in the memory block*/
 
+int writeLines(char *lineptr[], int nlines);
+/* output having lines in the array of pointers*/
+
+int readLine(char *lineptr[], int maxlines);
+/* reading input lines */
 #endif
