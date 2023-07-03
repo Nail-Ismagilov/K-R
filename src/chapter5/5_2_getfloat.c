@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-getfloat(char *pn){
+char getfloat(char *pn){
     
     char c, sign, is_sign, signFlag;
     signFlag = 0;

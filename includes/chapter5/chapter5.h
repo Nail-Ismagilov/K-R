@@ -11,7 +11,7 @@ const unsigned exercise[]       =  { 0,  1,  2,  3,  4,  5,  6,  7,  8, 9,
 
 
 
-unsigned int a = 3;
+// unsigned int a = 3;
 
 void strcat1(char s[], char t[]);
 
@@ -41,7 +41,7 @@ void strcopy(char *s, char*t, int n);
  * 
  */
 
-int getlines(char *s, int);
+int getlines(char *s, int lim);
 
 /* getlines: gets given from input line and saves in array s
  * \param s[]  an initial string to save input
@@ -86,7 +86,7 @@ int strlen1(char * s);
  * \return n the length of the string s
  */
 
-int strcmp (char * s, char * t);
+// int strcmp (char * s, char * t);
 /* strcmp: compares two strings
  * \param char *s  first string
  * \param char *t  second string
@@ -116,4 +116,18 @@ int writeLines(char *lineptr[], int nlines);
 
 int readLine(char *lineptr[], int maxlines);
 /* reading input lines */
+
+int getline(char *line, int max);
+/* find: print lines that match pattern from 1st arg*/
+
+int getch(void);
+/* getch: get a (possibly pushed back) character
+ * 
+ */
+
+void ungetch(int);
+/* ungetch: push character back on input
+ *
+ */
+
 #endif

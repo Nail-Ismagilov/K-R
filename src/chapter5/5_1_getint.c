@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int getch();
-void ungetch(int);
+
 
 int getint(int *pn)
 {
