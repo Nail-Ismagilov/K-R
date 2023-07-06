@@ -1,6 +1,7 @@
 ./.vscode
 .vscode/*
 *.o
+*.exe
 .vscode/configurationCache.log
 .vscode/dryrun.log
 .vscode/targets.log
