@@ -33,6 +33,7 @@ SOURCES = 	src/chapter5/5_1_getint.c \
 			src/chapter5/getch.c \
 			src/chapter5/5_6_Pointer_Arrays.c \
 			src/chapter5/allocbuf.c \
+			src/chapter5/polish_calc.c \
 			src/chapter5/main.c
 	  		 
 

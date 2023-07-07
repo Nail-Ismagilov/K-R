@@ -4,9 +4,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-const unsigned exercise[]       =  { 0,  1,  2,  3,  4,  5,  6,  7,  8, 9, 
-                                    10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-                                    20, 21, 22, 23, 24, 25, 26, 27, 28, 29};
 
 
 
@@ -55,7 +52,7 @@ void mygetline(char s[], int lim);
  * 
  */
 
-long long int atoi (char *s);
+//long long int atoi (char *s);
 /* atoi: converts given array to integer
  * \param s[]  an initial string 
  * 
@@ -127,6 +124,30 @@ int getch(void);
 
 void ungetch(int);
 /* ungetch: push character back on input
+ *
+ */
+
+void push (double f);
+/* push: push f onto value stack
+ *
+ * @param f double valuse that pushed to stack
+ *
+ */
+
+double pop(void);
+/* pop: pop and return top value from stack
+ *
+ */
+
+int getop(char s[]);
+/* getop: get next operator or numeric operand
+ *
+ *
+ * 
+ */
+void revPolish(int argc, char *arr[]);
+/* revPolish: a polish calculator
+ *
  *
  */
 
