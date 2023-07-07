@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int strlen1(char * s)
 {
@@ -30,18 +31,18 @@ void strcopy(char *s, char*t, int n)
     }
 }
 
-int strcmp (char * s, char * t)
-{
+// int strcmp (char * s, char * t)
+// {
    
-    for (; *s == *t; s++, t++)
-        if (*s == '\0')
-            return 0;
-    return (*s - *t);
-}
+//     for (; *s == *t; s++, t++)
+//         if (*s == '\0')
+//             return 0;
+//     return (*s - *t);
+// }
 
 int strend (char *s, char *t)
 {
-    int retVal       = 1;
+    int retVal       = 0;
     int lengthT, lengthS;
     /*counting digits in string T*/
     lengthT = strlen1(t);
@@ -54,9 +55,12 @@ int strend (char *s, char *t)
      {
         retVal = 0;
      }   
-        
-    if (strcmp( s +(lengthS - lengthT), t))
-        retVal = 0;
+
+    if (!(strcmp( s +(lengthS - lengthT), t)))
+        {   
+            retVal = 1;
+        }
+       
 
     return retVal;
 }

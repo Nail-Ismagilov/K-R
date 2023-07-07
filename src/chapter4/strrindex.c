@@ -1,6 +1,6 @@
 #include <stdint.h>
 int8_t strrindex (char s[], char t[]){
-	int i, j, k;
+	int j, k;
 	int rPos = 0;
 
 	// Test

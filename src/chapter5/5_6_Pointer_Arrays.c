@@ -78,7 +78,5 @@ int writeLines(char *lineptr[], int nlines)
 
     for(i = 0; i < nlines; i++)
         printf("%s\n", lineptr[i]);
+    return i;
 }
-
-
-

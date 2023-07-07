@@ -1,13 +1,13 @@
 #include <ctype.h>
 #include <stdio.h>
+#include "chapter5.h"
 
 int getch();
 
 
 int getint(int *pn)
 {
-    int c, sign, is_sign, signFlag;
-    signFlag = 0;
+    int c, sign;
     while (isspace(c = getch()))    /*skip white spaces*/
         ;
     if (isdigit(c) && c != EOF && c != '+' && c != '-')

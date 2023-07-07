@@ -114,7 +114,7 @@ int writeLines(char *lineptr[], int nlines);
 int readLine(char *lineptr[], int maxlines);
 /* reading input lines */
 
-int getline(char *line, int max);
+int getline(FILE *file, char [], int lim);
 /* find: print lines that match pattern from 1st arg*/
 
 int getch(void);
@@ -151,4 +151,18 @@ void revPolish(int argc, char *arr[]);
  *
  */
 
+int read_file(char **lineptr, char *file_name);
+/* read_file: reads line from a file
+ * par @ lineptr: buffer to store file input
+ * par @ filename: file which has to be opened
+ * return: number of lines in the text file
+ */
+
+void print_tail(int nlines, int number, char **lineptr);
+/* read_file: reads line from a file
+ * par @ nlines: number of lines in the text file
+ * par @ number: number of lines which should be printed out
+ * par @ lineptr: buffer to store file input
+ * return: number of lines in the text file
+ */
 #endif

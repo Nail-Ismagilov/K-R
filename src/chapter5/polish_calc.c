@@ -16,9 +16,8 @@ double get_stack();
 void revPolish(int argc, char *arr[])
 {
     // getarray(s, MAXOP);
-    int type, op3, app = 0, i = 0;
+    int op3, i = 0;
     double op2;
-    char s[MAXOP];
 
     // while (*++arr != '\0'){
     //     app++;

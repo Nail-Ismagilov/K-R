@@ -1,11 +1,11 @@
 #include <ctype.h>
 #include <stdio.h>
+#include "chapter5.h"
 
 
 char getfloat(char *pn){
     
-    char c, sign, is_sign, signFlag;
-    signFlag = 0;
+    char c, sign;
     while (isspace(c = getch()))    /*skip white spaces*/
         ;
     if (isdigit(c) && c != EOF && c != '+' && c != '-')
