@@ -69,6 +69,7 @@ int readLine(char *lineptr[], int maxlines)
             lineptr[nlines++] = p;
         }
     }
+    return 0;
 }
 
 

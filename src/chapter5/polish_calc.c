@@ -10,7 +10,7 @@
 int sp = 0;
 double val[MAXVAL];
 
-double get_stack();
+void get_stack();
 
 
 void revPolish(int argc, char *arr[])
@@ -126,6 +126,7 @@ int getop(char s[])
     return NUMBER;
 }
 
-double get_stack(){
+void get_stack()
+{
     printf("%f \n",val[0]);
 }

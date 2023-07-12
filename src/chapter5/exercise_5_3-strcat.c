@@ -14,13 +14,12 @@ void strcat1(char *s, char *t)
     while (*s++)
         ;
     s--;
-    while (*s++ = *t++)
+    while ((*s++ = *t++))
         ;
 }
 
 void strcopy(char *s, char*t, int n)
 {
-   int numberOfChar = n;
     
     while (*s++)
         ;

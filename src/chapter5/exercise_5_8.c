@@ -19,9 +19,9 @@ int day_of_year(int year, int month, int day)
 void month_day(int year, int yearday, int *pmonth, int *pday)
 {
     int i, leap;
-    leap = year%4 == 0 && year%100 != 0 || year%400 == 0;
+    (leap = year%4 == 0) && (year%100 != 0) || (year%400 == 0);
     //Error handling
-    if (leap && yearday <= 366 || yearday <= 365){   
+    if ((leap && yearday <= 366) || (yearday <= 365)){   
         for (i = 1; yearday > daytab[leap][i]; i++)
         {
             yearday -= daytab[leap][i];
@@ -31,8 +31,8 @@ void month_day(int year, int yearday, int *pmonth, int *pday)
     }
     else
     {
-        *pday = NULL;
-        *pmonth = NULL;
+        *pday   = 0;
+        *pmonth = 0;
         printf("Wrong data");
     }
     printf("\n*pday: %d, *pmonth: %d\n", *pday, *pmonth);
