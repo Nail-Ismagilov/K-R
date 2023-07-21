@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <string.h>
 #include "chapter5.h"
 #include "exercise.h"
@@ -9,40 +9,54 @@
 #define MAX_LENGTH 50
 #define SIZE       20
 
+char * lineptr[MAXLINES];                       /* pointers to text lines */
+// int readlines(char *lineptr[], int nlines);
+// void writelines(char *lineptr[], int nlines);
 
-/* tail -n: print last n lines of a file. n as default 10*/
+int numcmp(char *, char *);
+
+/* sort input lines*/
 int main(int argc, char *argv[])
 {
-    char * lineptr[MAXLINES];
+    
+    int numeric = 0, reverse = 0;
 
-    char * c, * file;
+    char *file;
     char filePattern[] = ".txt";
     int number = 10, nlines;
-    int test = -1;
+    int i = 0;
         
 
 
-
-    while (--argc > 0 )
+    
+    while (--argc >= 0 )
     {
-        // strcpy(*line, *argv);
-        // printf("argc = %d\n", argc);
-        // printf("argv: %s\n", *argv);
+   
+        printf("argv[%d]: %s\n", i, argv[i]);
 
-        if (**++argv == '-')
-        {   c = *argv;
-            number = atof(c);
-            if (number < 0)
-                number = -number;
+        if (strcmp(argv[i], "-n") == 0)
+        {
+            numeric = 1;
         }
-        
-        else if ((test = strend(*argv, filePattern)))
+        else if ((strcmp(argv[i], "-r") == 0))
+        {
+    	    reverse = 1;
+        }
+        else if (strend(argv[i], filePattern) == 1)
         {    
-            file = *argv;
-            // printf("found a file %s\n", file);
+            file = argv[i];
+            printf("found a file %s\n", file);
             nlines = read_file(lineptr, file);
-        }    
+            print_tail(nlines, number, lineptr);
+        }
+
+        i++;
     }
+    if (nlines >= 0)
+        {            
+            qsort((void **) lineptr, 0, nlines-1,
+                    (int(*)(void *, void *))(numeric ? numcmp : strcmp), reverse);
+        }
 
     print_tail(nlines, number, lineptr);
 

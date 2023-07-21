@@ -7,7 +7,7 @@
 
 #define MAXLINES    5000    /* max #lines to be stored */
 #define MAXLEN      1000    /* max length of any line */
-char *lineptr[MAXLINES];
+//char *lineptr[MAXLINES];
 
 
 char *alloc(int);

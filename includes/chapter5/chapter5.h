@@ -165,4 +165,18 @@ void print_tail(int nlines, int number, char **lineptr);
  * par @ lineptr: buffer to store file input
  * return: number of lines in the text file
  */
+
+void qsort (void * lineptr[], int left, int right,
+            int (*comp)(void *, void*), int reverse);
+/*qsort: quick sorting algorithm, to sort lines
+ *
+ *
+ * 
+ * */
+
+int numcmp(char *, char *);
+/*numcmp: comparing numbers
+ *
+ *
+ * */
 #endif

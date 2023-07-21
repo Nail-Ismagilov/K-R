@@ -21,7 +21,7 @@ char getfloat(char *pn){
 
     *pn = sign;
     pn++;
-    for (; isdigit(c) || c == "."; c = getch(), pn++)
+    for (; isdigit(c) || c == '.'; c = getch(), pn++)
     {
         *pn = c;
     }

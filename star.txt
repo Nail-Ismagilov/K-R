@@ -1,7 +1,13 @@
-Hello
-What are you doing?
-I am here to solve this exercise
-I am Kot
-I am durachok
-blabla bla bla
-Sedmay stroka
+10
+20
+30
+40
+100
+50
+200
+60
+300
+70
+900
+800
+Hello there

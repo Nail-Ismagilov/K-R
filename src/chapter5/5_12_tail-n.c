@@ -11,7 +11,7 @@ int read_file(char *lineptr[], char file_name[])
     int len, nlines = 0;
     FILE * filep;
     filep = fopen(file_name, "r");
-    // printf("read file %s.\n", file_name);
+    printf("read file %s.\n", file_name);
     
     if (filep != NULL)
     {
@@ -32,6 +32,7 @@ int read_file(char *lineptr[], char file_name[])
     }
     else    
         printf("could not open file: %s", file_name);
+
     fclose(filep);
 // printf("lineptr[0]: %s\n", lineptr[0]);
 // printf("lineptr[1]: %s\n", lineptr[1]);
@@ -66,7 +67,7 @@ int getline(FILE * file, char s[], int lim){
 void print_tail(int nlines, int number, char ** lineptr)
 {
     /*
-        1. check igf the number of lines greater than a given number
+        1. check if the number of lines greater than a given number
         2. print the tail of the text
     */
     int tail = number;
@@ -75,6 +76,4 @@ void print_tail(int nlines, int number, char ** lineptr)
 
     for (int i = nlines - tail; i < nlines; i++)
         printf("%s\n", lineptr[i]);
-        
-
 }

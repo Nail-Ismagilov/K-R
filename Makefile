@@ -1,7 +1,22 @@
 #
 # ****Makefile includes switch case CHAPTER=* ****
 #
+# that switch with help "CHAPTER==<CHAPTER_NUMBER>" option
 #
+# Use: make [CHAPTER_NUMBER]
+#
+# Build Targets:
+#      <FILE>.i - Builds <FILE>.i preprocessor files
+#      <FILE>.o - Builds <FILE>.o object files
+#      <FILE>.asm - Builds <FILE>.asm assembly files
+#      <FILE>.d - Builds <FILE>.d dependency files
+#      build - compile all object files and link into a final executable
+#      compile-all - compile all object files, but do not link
+#      clean - removes all compiled objects,
+#              preprocessed outputs, assembly outputs, executibale
+#              files and output files
+#
+#------------------------------------------------------------------------------
 
 include sources.mk
 
@@ -37,21 +52,23 @@ endif
 	$(CC) -M $< $(CFLAGS) $(INCLUDES)  -o $@
 
 
-build: $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(TARGET).exe
 
-.PHONY: all
-all: $(OBJS) $(DEPS) $(TARGET).out $(TARGET).asm
+.PHONY: build
+build: $(OBJS) $(DEPS) $(TARGET).out $(TARGET).asm $(TARGET).exe
 
 $(TARGET).out: $(SOURCES)
 	$(CC) $(SOURCES) $(INCLUDES) $(CFLAGS) $(LDFLAGS) -o $@
+#	$(SIZE) $@
+
+$(TARGET).exe: $(SOURCES)
+	$(CC) $(SOURCES) $(INCLUDES) $(CFLAGS) $(LDFLAGS) -o $@
 	$(SIZE) $@
 
-$(TARGET).asm: $(TARGET).out
+$(TARGET).asm: $(TARGET).exe
 	$(OBJDUMP) -d $< >> $@
 
-#exercise.o: exercise.c create_array.c
-#	gcc -c exercise.c create_array.c #exercise.h 
+.PHONY: compile-all
+compile-all: $(OBJS) $(PRPS) $(ASMS)
 
 .PHONY:clean
 clean: 

@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-//double atof(char s[]);
+double atof(char s[]);
 /* atof: convert array of characters to float number
  *
  * @param char s[] - array where the character of a number stored 

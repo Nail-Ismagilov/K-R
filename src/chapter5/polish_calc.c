@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <ctype.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include "chapter5.h"
+#include "exercise.h"
 
 #define MAXOP    100    // max size od operator
 #define NUMBER   '0'   // signal that a number was found
