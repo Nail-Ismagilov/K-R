@@ -1,3 +1,11 @@
+/*
+ * The programm tail is showing last n given lines, and sorts the entire file alpha-/numerecly
+ * command '-n': shows the last n lines of a file 
+ * command '-f': foldable
+ * command '-r': reverses the linse in the file allowing to show first n lines
+ *
+ */
+
 #include <stdio.h>
 //#include <stdlib.h>
 #include <string.h>
@@ -19,11 +27,11 @@ int numcmp(char *, char *);
 int main(int argc, char *argv[])
 {
     
-    int numeric = 0, reverse = 0;
+    int numeric = 0, reverse = 0, foldable = 0;
 
     char *file;
     char filePattern[] = ".txt";
-    int number = 10, nlines;
+    int number = 100, nlines;
     int i = 0;
         
 
@@ -32,7 +40,7 @@ int main(int argc, char *argv[])
     while (--argc >= 0 )
     {
    
-        printf("argv[%d]: %s\n", i, argv[i]);
+        // printf("argv[%d]: %s\n", i, argv[i]);
 
         if (strcmp(argv[i], "-n") == 0)
         {
@@ -42,12 +50,16 @@ int main(int argc, char *argv[])
         {
     	    reverse = 1;
         }
+        else if ((strcmp(argv[i], "-f") == 0))
+        {
+    	    foldable = 1;
+        }    
         else if (strend(argv[i], filePattern) == 1)
         {    
             file = argv[i];
-            printf("found a file %s\n", file);
+            //printf("found a file %s\n", file);
             nlines = read_file(lineptr, file);
-            print_tail(nlines, number, lineptr);
+            //print_tail(nlines, number, lineptr);
         }
 
         i++;
@@ -55,7 +67,7 @@ int main(int argc, char *argv[])
     if (nlines >= 0)
         {            
             qsort((void **) lineptr, 0, nlines-1,
-                    (int(*)(void *, void *))(numeric ? numcmp : strcmp), reverse);
+                    (int(*)(void *, void *))(numeric ? numcmp : (foldable ? strcmp_f : strcmp)), reverse);
         }
 
     print_tail(nlines, number, lineptr);

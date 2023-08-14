@@ -30,14 +30,15 @@ void strcopy(char *s, char*t, int n)
     }
 }
 
-// int strcmp (char * s, char * t)
-// {
+int strcmp_f (char * s, char * t)
+{
    
-//     for (; *s == *t; s++, t++)
-//         if (*s == '\0')
-//             return 0;
-//     return (*s - *t);
-// }
+    for (; (*s >= 'A' && *s <= 'Z') ? *s + 0x20 : *s == (*t >= 'A' && *t <= 'Z') ? *t + 0x20 : *t ; s++, t++)
+        if (*s == '\0')
+            return 0;
+    
+    return (*s - *t);
+}
 
 int strend (char *s, char *t)
 {

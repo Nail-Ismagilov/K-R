@@ -11,11 +11,13 @@ void qsort (void * v[], int left, int right, int (*comp)(void *, void*), int rev
     if (left >= right)                  /* do nothing if array contains */
         return;                         /* fewer than two elements */
     
-    swap(v, left, (left + right)/2);
+    swap(v, left, (left + right)/2);    /* get pivot*/
+
     last = left;
+    
     for (i = left + 1; i <= right; i++)
         if(reverse)
-        {    if((*comp)(v[i], v[left]) > 0 )
+        {    if((*comp)(v[i],  v[left]) > 0 )
                 swap(v, ++last, i);
         }
         else

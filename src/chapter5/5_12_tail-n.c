@@ -11,7 +11,7 @@ int read_file(char *lineptr[], char file_name[])
     int len, nlines = 0;
     FILE * filep;
     filep = fopen(file_name, "r");
-    printf("read file %s.\n", file_name);
+    // printf("read file %s.\n", file_name);                            // debugging. Print which file is opened
     
     if (filep != NULL)
     {
