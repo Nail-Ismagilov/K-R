@@ -5,6 +5,7 @@
 #define MAXTOKEN    100
 
 enum {NAME, PARENS, BRACKETS};
+enum {OK, ERROR};
 
 void dcl(void);
 void dirdcl(void);
@@ -15,7 +16,7 @@ char token[MAXTOKEN];               /* last token string */
 char name[MAXTOKEN];                /* identifier name */
 char datatype[MAXTOKEN];            /* data type = int, char, etc. */
 char out[1000];                     /* output striung */
-
+int error_status = OK;
 
 FILE * file; 
 
@@ -32,9 +33,11 @@ int main()  /* convert declarations to words */
         dcl();          /* parse rest of line */
         if (tokentype != '\n')
         {
+            error_status = ERROR;
             printf("syntax error\n");
         }
-        printf("%s: %s %s\n", name, out, datatype);
+        if (!error_status)
+            printf("%s: %s %s\n", name, out, datatype);
     }
     fclose(file);
     return 0;
@@ -62,17 +65,19 @@ void dirdcl(void)
         dcl();
         if (tokentype != ')')
         {
+            error_status = ERROR;
             printf("error: missing )\n");
         }
-            
     } 
     else if (tokentype == NAME)     /* variable name */
     {
         strcpy(name, token);
     }
     else
+    {
+        error_status = ERROR;
         printf("error: expected name or (dcl)\n");
-
+    }
 
     while ((type=gettoken()) == PARENS || type == BRACKETS)
     {
@@ -124,7 +129,17 @@ int gettoken(void)
     else if (c == '[')
     {
         for (*p++ = c; (*p++ = fgetc(file)) != ']';)
-            ;
+        {
+
+            if (!(isdigit(*(p-1)) && *(p-1) != '[' && *(p-1) != ']'))
+            {
+                if (!error_status)
+                {
+                    printf("error: index should be a number or non-sized\n");
+                }
+                error_status = ERROR;
+            }
+        }
         *p = '\0';
         tokentype = BRACKETS;
 
