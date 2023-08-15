@@ -4,7 +4,7 @@
 
 #define MAXTOKEN    100
 
-enum {NAME, PARENS, BRACKETS};
+enum {NAME, PARENS, BRACKETS, FUNARG};
 enum {OK, ERROR};
 
 void dcl(void);
@@ -79,7 +79,7 @@ void dirdcl(void)
         printf("error: expected name or (dcl)\n");
     }
 
-    while ((type=gettoken()) == PARENS || type == BRACKETS)
+    while ((type=gettoken()) == PARENS || type == BRACKETS || type == FUNARG)
     {
         switch (type)
         {
@@ -91,11 +91,11 @@ void dirdcl(void)
                         strcat(out, token);
                         strcat(out, " of");
                         break;
-            // case FUNARG:
-            //             strcat(out, " function passing ");
-            //             strcat(out, token);
-            //             strcat(out, " and returning");
-            //             break;
+            case FUNARG:
+                        strcat(out, " function passing ");
+                        strcat(out, token);
+                        strcat(out, " and returning");
+                        break;
             default:
                         break;
         }
