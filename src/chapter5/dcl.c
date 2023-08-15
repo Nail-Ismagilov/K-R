@@ -13,10 +13,12 @@ void dirdcl(void);
 int gettoken(void);
 int tokentype;                      /* type of last token */
 char token[MAXTOKEN];               /* last token string */
+char temptoken[MAXTOKEN];           /* temporar token*/
 char name[MAXTOKEN];                /* identifier name */
 char datatype[MAXTOKEN];            /* data type = int, char, etc. */
 char out[1000];                     /* output striung */
 int error_status = OK;
+
 
 FILE * file; 
 
@@ -108,7 +110,7 @@ int gettoken(void)
     
     int c;
     char *p = token;
-
+    char *temp = temptoken;
     while ((c = fgetc(file)) == ' ' || c == '\t')   /* skipping blanks and tabs*/
         ;
 
@@ -119,6 +121,36 @@ int gettoken(void)
             strcpy(token, "()");
             tokentype = PARENS;
         }
+        else if (isalpha(c))
+        {
+            
+            *p = '\0';  /* clear token array*/
+            
+            for (*temp++ = c; (*temp++ = fgetc(file)) != ')';)
+                {
+                    if (*(temp-1) == ' ' || *(temp) == '\t')         /* skipping blanks and tabs*/
+                        temp--;
+                    if (*(temp-1) == '*')                       /* searching for a pointer sign */
+                    {   
+                        *(temp-1) = '\0';
+                        if (temptoken[0] == ',')                /* taking the comma to the beginning of the string*/
+                        {
+                            
+                            strcat(token, ", ");
+                            for(int i; temptoken[i] != '\0'; i++)
+                                temptoken[i] = temptoken[i+1];
+                        }
+                        strcat(token, "pointer to ");
+                        strcat(token, temptoken);
+                        temp = &temptoken[0];
+                    }
+                    
+                }
+            *(temp-1) = '\0';
+            strcat(token, temptoken);
+            tokentype = FUNARG;
+        }
+        
         else
         {
             ungetc(c, file);
