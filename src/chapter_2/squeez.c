@@ -19,8 +19,8 @@ void squeez(char s1[], char s2[]) {
 	int i, j, y;
 	for(i=0; s2[i] != '\0'; i++){
 	    for(j=0; s1[j] != '\0'; j++) {
-		if(s1[j] == s2[i])
-		    for(y = j; s1[y] !='\0'; y++)
+			if(s1[j] == s2[i])
+		    	for(y = j; s1[y] !='\0'; y++)
 			s1[y] = s1[y+1];    
 	    }
 

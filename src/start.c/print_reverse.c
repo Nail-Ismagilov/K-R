@@ -68,7 +68,7 @@ void reverse(char s[], int left, int length)
 
 }
 
-/* itoa: convert n to characters in s */
+/* itob: convert n to characters in s */
 void itob(long int n, char s[], int b)
 {
 	int i; 
