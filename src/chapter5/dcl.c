@@ -111,29 +111,29 @@ int gettoken(void)
     int c;
     char *p = token;
     char *temp = temptoken;
-    while ((c = fgetc(file)) == ' ' || c == '\t')   /* skipping blanks and tabs*/
+    while ((c = fgetc(file)) == ' ' || c == '\t')                       /* skipping blanks and tabs*/
         ;
 
-    if (c == '(')                                   /* if the character is a open paran*/
+    if (c == '(')                                                       /* if the character is a open paran*/
     {
-        if ((c = fgetc(file)) == ')')               /* check if the next character is a closing paran*/
+        if ((c = fgetc(file)) == ')')                                   /* check if the next character is a closing paran*/
         {   
             strcpy(token, "()");
             tokentype = PARENS;
         }
-        else if (isalpha(c))
+        else if (isalpha(c))                                             /* check if the function has arguments */
         {
             
             *p = '\0';  /* clear token array*/
             
             for (*temp++ = c; (*temp++ = fgetc(file)) != ')';)
                 {
-                    if (*(temp-1) == ' ' || *(temp) == '\t')         /* skipping blanks and tabs*/
+                    if (*(temp-1) == ' ' || *(temp) == '\t')             /* skipping blanks and tabs*/
                         temp--;
-                    if (*(temp-1) == '*')                       /* searching for a pointer sign */
+                    if (*(temp-1) == '*')                                /* searching for a pointer sign */
                     {   
                         *(temp-1) = '\0';
-                        if (temptoken[0] == ',')                /* taking the comma to the beginning of the string*/
+                        if (temptoken[0] == ',')                        /* taking the comma to the beginning of the string*/
                         {
                             
                             strcat(token, ", ");
