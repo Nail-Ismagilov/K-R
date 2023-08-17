@@ -1,0 +1,27 @@
+
+int getword ( 
+char *word, int lim, 
+char * file_name)
+{
+    int c, 
+    getch(void);
+    void 
+    ungetch(int);
+    char 
+    *w = word;
+    FILE * filep;
+    filep = fopen(file_name, "r");
+
+    while 
+    (isspace(c = fgetc(filep)))
+        ;
+    if 
+    (c != EOF)
+        *w++ = c;
+    if 
+    ( !isalpha(c))
+    {
+        *w = '\0';
+        return 
+        c;
+    }

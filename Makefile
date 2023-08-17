@@ -53,5 +53,24 @@ endif
 
 
 
-clean:
-	rm -f $(OBJS) *.out program
+.PHONY: build
+build: $(OBJS) $(DEPS) $(TARGET).out $(TARGET).asm $(TARGET).exe
+
+$(TARGET).out: $(SOURCES)
+	$(CC) $(SOURCES) $(INCLUDES) $(CFLAGS) $(LDFLAGS) -o $@
+#	$(SIZE) $@
+
+$(TARGET).exe: $(SOURCES)
+	$(CC) $(SOURCES) $(INCLUDES) $(CFLAGS) $(LDFLAGS) -o $@
+	$(SIZE) $@
+
+$(TARGET).asm: $(TARGET).exe
+	$(OBJDUMP) -d $< >> $@
+
+.PHONY: compile-all
+compile-all: $(OBJS) $(PRPS) $(ASMS)
+
+.PHONY:clean
+clean: 
+	rm -f src/$(CHAPTER)/$(OBJS) src/$(CHAPTER)/$(PRPS) src/$(CHAPTER)/$(ASMS) src/$(CHAPTER)/$(DEPS) *.out $(TARGET).exe \
+	$(TARGET).asm $(TARGET).map src/$(CHAPTER)/*.o src/$(CHAPTER)/*.exe

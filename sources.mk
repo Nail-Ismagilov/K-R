@@ -40,16 +40,21 @@ SOURCES = 	src/chapter4/atof.c 				\
 			src/chapter5/5_12_tail-n.c	 		\
 			src/chapter5/5_Pointer_functions.c  \
 			src/chapter5/main.c
-			
-			
-	  		 
-
 
 # Include path
-INCLUDES = -I includes/chapter4 				\
+INCLUDES =  -I includes/chapter4 				\
 		    -I includes/chapter5
 endif
 
+ifeq ($(CHAPTER), 6)
+SOURCES =	src/chapter5/exercise_5_3-strcat.c 		\
+			src/chapter5/allocbuf.c 				\
+			src/chapter5/5_12_tail-n.c	 			\
+			src/chapter6/keyword-counting.c 		\
+			src/chapter6/main.c
 
-
+# Include path
+INCLUDES =  -I includes/chapter5 				\
+			-I includes/chapter6
+endif
 

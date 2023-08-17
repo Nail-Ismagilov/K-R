@@ -4,6 +4,8 @@
  *
  * */
 
+#include <stdio.h>
+
 #define XMAX    320
 #define YMAX    200     
 
@@ -76,9 +78,8 @@ struct point addppoint(struct point p1, struct point p2)
     where the pt1coordinates are less than the pt2 coordinates. */
 int printrect(struct point p, struct rect r)
 {
-    return p1.x >= r.pt1.x && p1.x <= r.pt2.x &&
-           p1.y >= r.pt1.y && p1.y <= r.pt2.y;
-    p1.y;
+    return p.x >= r.pt1.x && p.x <= r.pt2.x &&
+           p.y >= r.pt1.y && p.y <= r.pt2.y;
 }
 
 /* The following function returns a rectangle guaranteed to be in cannonical form.

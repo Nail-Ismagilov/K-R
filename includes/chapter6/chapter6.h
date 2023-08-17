@@ -1,16 +1,29 @@
-#include <chapter6.h>
-/* count C keywords*/
-int main()
-{
-    int n;
-    char word[MAXWORD];
 
-    while (getword(word, MAXWORD) != EOF)
-        if (isalpha(word[0]))
-            if((n = binsearch(word, keytab, NKEYS)) >= 0)
-            keytab[n].count++;
-        for (n = 0; n < NKEYS; n++)
-            if (keytab[n].count > 0)
-                printf("%4d %s\n", 
-                        keytab[n].count, keytab[n].word);
-}
+#ifndef __CHAPTER6_H__
+#define __CHAPTER6_H__
+
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+#define MAXWORD  100
+
+struct key{
+    char *word;
+    int count;
+} ;  
+
+
+/* binsearch: find word in tab[0]..tab[n-1] 
+ * strcat: ccontantenate t to end of s; s must be big enough
+ * @word a character, that should be checked 
+ *             wheter is digit or not
+* @tab[] an array of structure storing a word and integer number
+ * @n    is a size of the tab array   
+ */
+int binsearch(char * word, struct key tab[], int n);
+
+/* getword: get neyt word or c*/
+int getword(char *, int, char *);
+
+#endif

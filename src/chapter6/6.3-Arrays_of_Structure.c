@@ -22,13 +22,13 @@ int main(){
      *  int count
      */
 
-    struct key{
-        char *word;
-        int count;
-    } keytab[NKEYS];
+    // struct key{
+    //     char *word;
+    //     int count;
+    // } keytab[NKEYS];
    
    
-   /* declares a structure tyope key, defines an array keytab of structures of this
+   /* declares a structure type key, defines an array keytab of structures of this
     * type, and sets aside storage for them. Each element of the array is a structure.
     * 
     * */
@@ -38,7 +38,7 @@ int main(){
         int count;
     };
 
-    struct key keytab[NKEYS];
+    // struct key keytab[NKEYS];
 
     return 0;
 }
