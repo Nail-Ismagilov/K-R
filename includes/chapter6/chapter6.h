@@ -24,6 +24,14 @@ struct key{
 int binsearch(char * word, struct key tab[], int n);
 
 /* getword: get neyt word or c*/
-int getword(char *, int, char *);
+int getword(char *, int, FILE *);
+
+/* getchf: get a character from a file 
+ * @file is a file from the chracter has to be read*/
+char getchf(FILE * file);
+
+/* ungetchf: store the character in a buffer
+ * @c the character which has to be stored */
+void ungetchf(char c);
 
 #endif

@@ -3,45 +3,53 @@
 #include <string.h>
 #include "chapter6.h"
 
+#define BUFFSIZE    100
+
+char buf[BUFFSIZE]; /* buffer for ungetch */
+int bufp = 0;       /* next free position in buf */
 
 
-int getword(char *word, int lim, char * file_name)
+
+int getword(char *word, int lim, FILE * filep)
 {
-    printf("I am in the getword....\n");
-    int c, getch(void);
-    void ungetch(int);
+    // printf("I am in the getword....\n");
+    int c;
     char *w = word;
-    // FILE * filep;
-    // filep = fopen(file_name, "r");
-
-    while (isspace(c = fgetc(filep)))
+    while (isspace(c = getchf(filep)))
         ;
     if (c != EOF)
         *w++ = c;
-    if ( !isalpha(c))
+    if ( !isalpha(c) )
     {
-        *w = '\0';
-        return c;
+        if(c != '#' || c != '_')
+        {
+            *w = '\0';
+            return c;
+        }
     }
 
     for( ; --lim > 0; w++)
-        if(!isalnum(*w = fgetc(filep)))
-        {
-            ungetc(*w, filep);
-            break;
+    {
+        if(!isalnum(*w = getchf(filep)))
+        {   
+                ungetchf(*w);
+                break;
         }
+    }
     *w = '\0';
-    for (int i=0; word[i] != '\0'; i++)
-        printf("%c", word[i]);
-    printf("\n");
-    fclose(filep);
+
+    if (word[0] == '#')
+        for(int i = 0; word[i] != '\0';i++)
+            word[i] = word[i+1];
+
+    // printf("\n"); 
     return word[0];
 
 }
 
 int binsearch(char *word, struct key tab[], int n)
 {
-    printf("enter binsearch...\n");
+    // printf("enter binsearch...\n");
     int cond;
     int low, high, mid;
 
@@ -50,6 +58,8 @@ int binsearch(char *word, struct key tab[], int n)
     while (low <= high)
     {
         mid = (low + high) / 2;
+        // printf("word: %s\ntab.word: %s\n", word, tab[mid].word);
+        // printf("Is word and tab.word equal: %s\n", (strcmp(word, tab[mid].word)) ? "NO" : "YES" );
         if ((cond = strcmp(word, tab[mid].word)) < 0)
             high = mid - 1;
         else if (cond > 0)
@@ -61,3 +71,15 @@ int binsearch(char *word, struct key tab[], int n)
     
 }
 
+char getchf(FILE * file)
+{
+    return (bufp > 0) ? buf[--bufp] :  fgetc(file);
+}
+
+void ungetchf(char c)
+{
+    if (bufp >= BUFFSIZE)
+        fprintf(stderr, "ungetch: too many characters\n");
+    else
+        buf[bufp++] = c;
+}
