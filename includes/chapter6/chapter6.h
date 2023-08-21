@@ -23,6 +23,17 @@ struct key{
  */
 int binsearch(char * word, struct key tab[], int n);
 
+struct key * pbinsearch(char * word, struct key * tab, int n);
+/* pbinsearch: is a pointer version ofbinsearc 
+ * strcat: ccontantenate t to end of s; s must be big enough
+ * @word a character, that should be checked 
+ *             wheter is digit or not
+ * @tab is a apointer to structure key
+ * @n    is a size of the tab array   
+ * return: pointer to a strucure type key
+ */
+
+
 /* getword: get neyt word or c*/
 int getword(char *, int, FILE *);
 

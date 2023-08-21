@@ -4,6 +4,7 @@
 
 /* count C keywords*/
 struct key keytab[] = {
+    {"/*", 0},
     {"auto", 0},
     {"break", 0},
     {"case", 0},
@@ -36,11 +37,7 @@ struct key keytab[] = {
     {"unsigned", 0},
     {"void", 0},
     {"volatile", 0},
-    
-    {"unsigned", 0},
-    
-    {"comment", 0}
-
+    {"unsigned", 0}
 };  
 
 
@@ -48,6 +45,7 @@ int main(int argc, char *argv[])
 {
     int n;
     char word[MAXWORD];
+    struct key *p;
     char *file = "test.txt";
 
     char filePattern[] = ".txt";
@@ -79,15 +77,17 @@ int main(int argc, char *argv[])
             //     printf("%c",word[i]);
             // printf("\n");    
 
-            if ((n = binsearch(word, keytab, NKEYS)) >= 0)
-                keytab[n].count++;
+            if ((p = pbinsearch(word, keytab, NKEYS)) != NULL)
+                p->count++;
+                
         }
     }
 
-    for (n = 0; n < NKEYS; n++)
-        if (keytab[n].count > 0)
-            printf("%4d %s\n",
-                    keytab[n].count, keytab[n].word);
+            for (p = keytab; p < keytab + NKEYS; p++)
+                if (p->count > 0)
+                    printf("%4d %s\n",
+                            p->count, p->word);
+
     
     fclose(filep);
     return 0;
