@@ -13,6 +13,7 @@ struct key{
     int count;
 } ;  
 
+enum {KEYWORD = 0, STRING, COMMENT, MULTIPLE_LINE_COMMENT, NOT_DEFINED};
 
 /* binsearch: find word in tab[0]..tab[n-1] 
  * strcat: ccontantenate t to end of s; s must be big enough
@@ -44,5 +45,13 @@ char getchf(FILE * file);
 /* ungetchf: store the character in a buffer
  * @c the character which has to be stored */
 void ungetchf(char c);
+
+/* setstatus: sets a status of a current code part
+ *
+ * @n is a current character came from the reading file
+ * @precChar is a previous character
+ * @token is a current status which should be changed or not
+ * */
+void setstatus(int n, int *prevChar, int *token);
 
 #endif

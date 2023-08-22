@@ -41,19 +41,27 @@ struct key keytab[] = {
 };  
 
 
+
+
+
 int main(int argc, char *argv[])
 {
     int n;
     char word[MAXWORD];
     struct key *p;
     char *file = "test.txt";
+    int token = KEYWORD;                /* Current status */
+    int prevChar = '\0';               /* previous character */
 
     char filePattern[] = ".txt";
     char sourceFilePattern[] = ".c";
     char headerFilePattern[] = ".h";
     
+
+    
+
     FILE * filep;
-    printf("NKEYS = %lld\n", NKEYS);
+    // printf("NKEYS = %lld\n", NKEYS);
     while (--argc > 0 )
     {
         if ((strend(*argv, filePattern))       || 
@@ -66,23 +74,33 @@ int main(int argc, char *argv[])
 
     filep = fopen(file, "r");
 
-    while (getword(word, MAXWORD, filep) != EOF)
+
+    
+    
+
+    while ((n = getword(word, MAXWORD, filep)) != EOF)
     {
-        // if(word[0] == '#')
-        //     for(int i = 0; word[i] != '\0'; i++)
-        //         word[i] = word[i+1];
-        if (isalpha(word[0]))
+        
+        if ((isalpha(word[0])) && (KEYWORD == token || NOT_DEFINED == token))
         { 
-            // for(int i = 0; word[i] != '\0';i++)
-            //     printf("%c",word[i]);
-            // printf("\n");    
 
             if ((p = pbinsearch(word, keytab, NKEYS)) != NULL)
-                p->count++;
-                
+                p->count++;   
         }
+        else
+        { 
+            setstatus(n, &prevChar, &token);
+            // printf("prevChar: %c CurrentChar: %c token %d\n", prevChar, n, token);
+            if (KEYWORD == token)
+                prevChar = '\0';
+            else
+                prevChar = n;
+            
+                            
+            
+        }
+        
     }
-
             for (p = keytab; p < keytab + NKEYS; p++)
                 if (p->count > 0)
                     printf("%4d %s\n",

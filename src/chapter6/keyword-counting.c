@@ -9,19 +9,18 @@ char buf[BUFFSIZE]; /* buffer for ungetch */
 int bufp = 0;       /* next free position in buf */
 
 
-
 int getword(char *word, int lim, FILE * filep)
 {
     // printf("I am in the getword....\n");
     int c;
     char *w = word;
-    while (isspace(c = getchf(filep)))
+    while ((c = getchf(filep)) == ' ')
         ;
     if (c != EOF)
         *w++ = c;
     if ( !isalpha(c) )
     {
-        if(c != '#' || c != '/')
+        if(c != '#' || c!= '_')
         {
             *w = '\0';
             return c;
@@ -38,15 +37,15 @@ int getword(char *word, int lim, FILE * filep)
                 break;
             }
         }
-
     }
     *w = '\0';
 
-    if (word[0] == '#')
+    if (word[0] == '#' || word[0] == '_')
         for(int i = 0; word[i] != '\0';i++)
             word[i] = word[i+1];
 
     // printf("\n"); 
+    
     return word[0];
 
 }
@@ -90,8 +89,6 @@ struct key * pbinsearch(char * word, struct key * tab, int n)
     while (low < high)
     {
         mid = low + (high-low) / 2;
-        // printf("word: %s\ntab.word: %s\n", word, tab[mid].word);
-        // printf("Is word and tab.word equal: %s\n", (strcmp(word, tab[mid].word)) ? "NO" : "YES" );
         if ((cond = strcmp(word, mid->word)) < 0)
             high = mid;
         else if (cond > 0)
@@ -116,4 +113,82 @@ void ungetchf(char c)
         fprintf(stderr, "ungetch: too many characters\n");
     else
         buf[bufp++] = c;
+}
+
+void setstatus(int n, int *prevChar, int *token)
+{
+    switch(n)
+    {
+        case '/':
+            switch (*token)
+            {
+                case NOT_DEFINED:
+                    if (*prevChar == '/')
+                    {
+                        *token = COMMENT;
+                    }
+                    break;
+                case MULTIPLE_LINE_COMMENT:
+                    if (*prevChar == '*')
+                    {
+                        *token = KEYWORD;
+                    }
+                    break;
+                case KEYWORD:
+                    *token = NOT_DEFINED;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case '*':
+            switch (*token)
+            {
+                case NOT_DEFINED:
+                    if (*prevChar == '/')
+                    {
+                        *token = MULTIPLE_LINE_COMMENT;
+                    }
+                    break;
+                case KEYWORD:
+                    *token = KEYWORD;
+                    break;
+                default:
+                    break;
+            }
+            break;
+
+        case '\"':
+            switch (*token)
+            {
+                case KEYWORD:
+                    if (*prevChar != '\\')
+                        *token = STRING;
+                    break;
+                case STRING:
+                    if (*prevChar != '\\')
+                        *token = KEYWORD;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case '\n':
+            switch (*token)
+            {
+                
+                case COMMENT:
+                    *token = KEYWORD;
+                case STRING:
+                case KEYWORD:
+                case MULTIPLE_LINE_COMMENT:
+                default:
+                    break;
+            }
+            break;
+        default:
+            if (NOT_DEFINED == *token)
+                *token = KEYWORD;
+            break;
+    }
 }
