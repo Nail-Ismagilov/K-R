@@ -37,15 +37,21 @@ int strnend (char *s, char *t, int n)
     return retVal;
 }
 
-int isWordinArr(char **arr, char *word)
+int isWordinArr(char **arr, char *word, int length)
 {
-    int i, comp = 1;
-    for (i = 0; *arr[i] != '\0'; i++)
-    {    
-        comp = strcmp(arr[i], word);
-        if (!comp)
-            return YES; 
+    // printf("debug: I am in the word array checking\n");
+    int i, comp;
 
+    for (i = 0; i < length; i++)
+    {   
+        // printf("debug: *arr[%d] - %s\tword - %s\n", i, arr[i], word);
+        comp = strcmp(arr[i], word);
+        // printf("debug: comp == %d\n", comp);
+        if (comp == 0)
+        {   
+            return YES; 
+        }
     }
+    // printf("debug: I am off from the word array checking\n");
     return NO;
 }

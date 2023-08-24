@@ -4,8 +4,10 @@
 #include <stdlib.h>
 #include "chapter6.h"
 
-char *NOISY_WORDS[] = {"the", "in", "at", "to", 
-              "that", "or", "on", "of", "an", '\0'};
+static char *NOISY_WORDS[] = {"the", "in", "at", "to",  /* array of noisy words to avoid in the listing */
+              "that", "or", "on", "of", "an", "a"};
+
+int arrLength = 10; /* size of the NOISY_WORDS array */
 
 struct tnode *addtree(struct tnode *p, char *w)
 {
@@ -201,7 +203,7 @@ struct lnode *addtreeline(struct lnode *p, char *w, int line)
     int cond;
   //   printf("debug: I am in the add tree\n");
     // printf("debug: into addtree\n");
-    // if (isWordinArr(NOISY_WORDS, w) == 0)
+    if (isWordinArr(NOISY_WORDS, w, arrLength) == 0)
     {
         if (p == NULL) {        /* a new word is arrived */
 

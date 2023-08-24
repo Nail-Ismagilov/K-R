@@ -96,7 +96,7 @@ void treeprint (struct tnode *p);
  * \return a pointer to the structure type tnode*/
 struct tnode *talloc(void);
 
-/* galloc: make a tnode 
+/* galloc: make a wordgroup 
  * \return a pointer to the structure type wordgroup*/
 struct wordgroup *galloc(void);
 
@@ -132,17 +132,41 @@ void group_treeprint (struct wordgroup *p);
 
 
 
-
+/* addtreeline: adds to a tree of data adding line number
+ * \param struct lnode *p is the node;
+ * \param char* w is he word to add in the tree 
+ * \return a node of the tree*/
 struct lnode *addtreeline(struct lnode *p, char *w, int line);
 
+/* tlalloc: make a lnode 
+ * \return a pointer to the structure type wordgroup*/
 struct lnode *tlalloc(void);
 
+/* addline: adds line number nline in a tree on the right or the left side 
+ * \param struct line *lines is the node;
+ * \param int nline the number to add in the tree
+ * \return a node of the tree */
 struct line * addline(struct line *lines, int nline);
 
+/* lalloc: make a line 
+ * \return a pointer to the structure type wordgroup*/
 struct line *lalloc(void);
 
+/* printWordLines: prints elements of bintree
+ * \param struct lnode *lineNode) is a bintree to print 
+*/
 void printWordLines(struct lnode *lineNode);
+
+/* printLineNumber: prints elements of bintree
+ * \param struct line * line is a bintree to print 
+*/
 void printLineNumber(struct line * line);
-int isWordinArr(char **arr, char *word);
+
+/* isWordinArr: check if the given word in the given array of words
+ * \param char **arr is array of words
+ * \param char *word is a word to check
+ * \param int length is the length of the array of words
+ * \return 1 if the word in the array, otherweise 0*/
+int isWordinArr(char **arr, char *word, int length);
 
 #endif
