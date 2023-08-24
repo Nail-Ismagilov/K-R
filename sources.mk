@@ -51,6 +51,8 @@ SOURCES =	src/chapter5/exercise_5_3-strcat.c 		\
 			src/chapter5/allocbuf.c 				\
 			src/chapter5/5_12_tail-n.c	 			\
 			src/chapter6/keyword-counting.c 		\
+			src/chapter6/bintree.c 					\
+			src/chapter6/string_extended.c			\
 			src/chapter6/main.c
 
 # Include path
