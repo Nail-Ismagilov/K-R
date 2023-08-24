@@ -8,6 +8,7 @@
 
 #define MAXWORD  100
 
+
 struct key{ 
     char *word;
     int count;
@@ -20,11 +21,20 @@ struct tnode{               /* the tree node: */
     struct tnode *right;    /* right child */
 };
 
-// struct word{                    /* words */
-//     char *word;                 /* points to the string*/
-//     struct word * leftWord;     /* left child */
-//     struct word * rightWord;    /* right child */
-// };
+struct line{
+    int n;
+    struct line *left;
+    struct line *right;
+};
+
+struct lnode{               /* the tree node: */
+    char *word;             /* points to the text */
+    int count;              /* number of occurences */
+    struct line *line;      /* lines where the word occurs*/
+    struct lnode *left;     /* left child */
+    struct lnode *right;    /* right child */
+};
+
 
 struct wordgroup{              /* group of words with same last 6 chars*/
     char *group;               /* points to the name of the group */
@@ -119,4 +129,20 @@ struct wordgroup * group_elements (struct tnode *p,  int n);
  * \param struct wordgroup *p is a bintree to print 
 */
 void group_treeprint (struct wordgroup *p);
+
+
+
+
+struct lnode *addtreeline(struct lnode *p, char *w, int line);
+
+struct lnode *tlalloc(void);
+
+struct line * addline(struct line *lines, int nline);
+
+struct line *lalloc(void);
+
+void printWordLines(struct lnode *lineNode);
+void printLineNumber(struct line * line);
+int isWordinArr(char **arr, char *word);
+
 #endif

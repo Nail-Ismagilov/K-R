@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
     char *file = "test.txt";
     int token = KEYWORD;                /* Current status */
     int prevChar = '\0';               /* previous character */
+    int lineNumber = 1;
 
     char filePattern[] = ".txt";
     char sourceFilePattern[] = ".c";
@@ -63,9 +64,12 @@ int main(int argc, char *argv[])
     
     struct tnode *root;
     struct wordgroup *wordroot;
+    struct lnode *line;
+
     root = NULL;
     wordroot = NULL;
-    
+    line = NULL;
+
 
     FILE * filep;
     // printf("NKEYS = %lld\n", NKEYS);
@@ -84,13 +88,22 @@ int main(int argc, char *argv[])
 
     while ((n = getword(word, MAXWORD, filep)) != EOF)
     {
+
+        if (n == '\n')
+        {
+            lineNumber++;
+        }
+            
         if ((isalpha(word[0])) && (KEYWORD == token || NOT_DEFINED == token))
         { 
                 //printf("debug: isalpha true\n\tword: %s\n", word);
+                // wordCopy = my_strdup(word);
                 root = addtree(root, word); 
+                line = addtreeline(line, word, lineNumber);
         }
         else
         { 
+            
             setstatus(n, &prevChar, &token);
             // printf("prevChar: %c CurrentChar: %c token %d\n", prevChar, n, token);
             if (KEYWORD == token)
@@ -102,8 +115,16 @@ int main(int argc, char *argv[])
     }
     
     // treeprint(root);
-    wordroot = group_elements(root, 4);
-    group_treeprint(wordroot);
+
+    wordroot = group_elements(root, 4); /* grouping elements */
+    // group_treeprint(wordroot);          /* print the groups and their elements*/
+    
+    printf(" count \t\tWORD\t\t\t\tLINE\n");
+    for(int i = 0; i<100; i++)
+        printf("-");
+    printf("\n");
+
+    printWordLines(line);
 
     fclose(filep);
     return 0;

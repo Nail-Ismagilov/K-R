@@ -1,5 +1,9 @@
 #include <string.h>
 #include "chapter5.h"
+
+#define YES 1
+#define NO  0
+
 // int strlen1(char * s)
 // {
 //     char *p = s;
@@ -31,4 +35,17 @@ int strnend (char *s, char *t, int n)
 
     // printf("debug: strend compare. retVal == %d", retVal);
     return retVal;
+}
+
+int isWordinArr(char **arr, char *word)
+{
+    int i, comp = 1;
+    for (i = 0; *arr[i] != '\0'; i++)
+    {    
+        comp = strcmp(arr[i], word);
+        if (!comp)
+            return YES; 
+
+    }
+    return NO;
 }

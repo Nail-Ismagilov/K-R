@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include "chapter6.h"
 
+char *NOISY_WORDS[] = {"the", "in", "at", "to", 
+              "that", "or", "on", "of", "an", '\0'};
+
 struct tnode *addtree(struct tnode *p, char *w)
 {
     int cond;
@@ -43,13 +46,6 @@ void treeprint (struct tnode *p)
     }
 }
 
-/*
-    add each word to a group (explicitly for the last 6 chars):
-        1. add groupname (last 6 chars)
-        2. make word counts
-        3. if the word add to word database
-    
-*/
 
 struct tnode *talloc(void)
 {
@@ -59,6 +55,16 @@ struct tnode *talloc(void)
 struct wordgroup *galloc(void)
 {
     return (struct wordgroup*)malloc(sizeof(struct wordgroup));
+}
+
+struct line *lalloc(void)
+{
+    return (struct line*)malloc(sizeof(struct line));
+}
+
+struct lnode *tlalloc(void)
+{
+    return (struct lnode*)malloc(sizeof(struct lnode));
 }
 
 char *my_strdup(char *s)   /* make a duplicate of s */
@@ -84,6 +90,7 @@ struct wordgroup *addgroup(struct wordgroup *p, char *w, int n)
             p = galloc();       /* make a new node */
             p->group = my_strdup(w+(length - n));
             p->count = 1;
+            p->word = NULL;
             p->word = addtree(p->word, w);
             p->left = p->right = NULL;
         }
@@ -138,9 +145,8 @@ struct wordgroup * group_elements (struct tnode *node, int n)
         {
             temp = temp->left;
         }
-        
-        
     }
+
     group_elements(node->left, n);
     return group;
 }
@@ -157,9 +163,101 @@ void group_treeprint (struct wordgroup *p)
             printf(" -- Group: %s --\n", p->group);
             printf("=====================\n");
             treeprint (p->word);
+            printf("\n");
         }
         group_treeprint(p->right);
     }
+    
 }
 
+struct line *addline(struct line *lines, int nline)
+{
+    int cond;
+  //   printf("debug: I am in the addline\n");
+    if (lines == NULL)      /* a new line os arrived */
+    {
+      //   printf("debug: adding line\n");
+        lines = lalloc();   /* make a new node */ 
+        lines->n = nline; 
+        lines->left = lines->right = NULL;  
+    }
+    else if ((cond = (lines->n > nline)) < 0)      /* less than into left subtree */
+    {
+        lines->left = addline(lines->left, nline);
+      //   printf("debug: addtreeline into left\n");
+    }
+    else                    /* greater than into right subtree*/
+    {
+        lines->right = addline(lines->right, nline);
+      //   printf("debug: addtreeline into right\n");
+    }
+
+  //   printf("debug: finish adding the line\n");
+    return lines;
+}
+
+struct lnode *addtreeline(struct lnode *p, char *w, int line)
+{
+    int cond;
+  //   printf("debug: I am in the add tree\n");
+    // printf("debug: into addtree\n");
+    // if (isWordinArr(NOISY_WORDS, w) == 0)
+    {
+        if (p == NULL) {        /* a new word is arrived */
+
+        //   printf("debug: create line tree - p is NULL\n");
+            p = tlalloc();       /* make a new node */
+            p->word = my_strdup(w);
+            p->count = 1;
+            p->line = NULL;
+            p->line = addline(p->line, line);
+            // printf("added line number %d\n", p->line->n);
+            p->left = p->right = NULL;
+        //   printf("debug: line added, node created\n");
+        }
+        else if ((cond = strcmp(w, p->word)) == 0)
+        {
+        //   printf("debug: addtreeline repeated line\n");
+            p->count++;         /* repeated word */
+            p->line = addline(p->line, line);
+            // printf("added line number %d\n", p->line->n);     
+        }
+        else if (cond < 0)      /* less than into left subtree */
+        {
+            p->left = addtreeline(p->left, w, line);
+        //   printf("debug: addtreeline into left\n");
+        }
+        else                    /* greater than into right subtree*/
+        {
+            p->right = addtreeline(p->right, w, line);
+        //   printf("debug: addtreeline into right\n");
+        }
+    }
+    //printf("debug: end of addtree\n");
+    return p;
+}
+
+
+void printWordLines(struct lnode *lineNode)
+{
+    if (lineNode != NULL)
+    {
+        printWordLines(lineNode->left);
+        printf("%4d %20s\t", lineNode->count, lineNode->word);
+            printLineNumber(lineNode->line);
+        printf("\n");
+        printWordLines(lineNode->right);
+    }
+}
+
+void printLineNumber(struct line * line)
+{
+    
+    if (line != NULL)
+    { 
+        printLineNumber(line->left);
+        printf(" %3d ", line->n); 
+        printLineNumber(line->right); 
+    }
+}
 
