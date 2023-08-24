@@ -86,6 +86,11 @@ void treeprint (struct tnode *p);
  * \return a pointer to the structure type tnode*/
 struct tnode *talloc(void);
 
+/* galloc: make a tnode 
+ * \return a pointer to the structure type wordgroup*/
+struct wordgroup *galloc(void);
+
+
 /* strdup: make a duplicate of s
  *
  * \param char* s what has to be dublicated 
@@ -102,12 +107,16 @@ char *my_strdup(char *s);
  * */
 int strnend (char *s, char *t, int n);
 
-/* printIdentSix: prints the group of string from a tree 
- *                if the last 6 characters of the strings are same and  
- *                at least one from rest chars is distinguished
- * \param struct tnode *p is a treee where the strings are searched*/
-void printIdentSix (struct tnode *p);
-
+/* group_elements: groups words with the same n endings
+ * \param struct tnode *p is a bintree which storess words to be grouped
+ * \param int n the last n charater patterns of word to group
+ * 
+ * \retutrn pointer to root value of bintree of grouped elements
+ */
 struct wordgroup * group_elements (struct tnode *p,  int n);
+
+/* group_treeprint: prints elements of bintree
+ * \param struct wordgroup *p is a bintree to print 
+*/
 void group_treeprint (struct wordgroup *p);
 #endif
