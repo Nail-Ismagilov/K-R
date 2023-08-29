@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
     printWordLines(line);
     fclose(filep);
 
-    printf("\n\n ~~~~~~~~~~ EXERCISE 6.2 ~~~~~~~~~~\n");
+    printf("\n\n ~~~~~~~~~~ EXERCISE 6.5 ~~~~~~~~~~\n");
     
     struct nlist *np;
     char *name = "IN";
