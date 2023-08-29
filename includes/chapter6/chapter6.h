@@ -5,9 +5,12 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdint.h>
 
 #define MAXWORD  100
+#define HASHSIZE    101
 
+static struct nlist *hashtab[HASHSIZE];     /* pointer table */
 
 struct key{ 
     char *word;
@@ -42,6 +45,13 @@ struct wordgroup{              /* group of words with same last 6 chars*/
     int count;                 /* counts number of words in the group*/
     struct wordgroup *left;    /* left child */
     struct wordgroup *right;   /* right child */
+};
+
+
+struct nlist {       /*table entry: */
+    struct nlist *next;     /* next entry in chain */
+    char *name;             /* definend name */       
+    char *defn;             /* replacement text */
 };
 
 enum {KEYWORD = 0, STRING, COMMENT, MULTIPLE_LINE_COMMENT, NOT_DEFINED};
@@ -152,8 +162,8 @@ struct line * addline(struct line *lines, int nline);
  * \return a pointer to the structure type wordgroup*/
 struct line *lalloc(void);
 
-/* printWordLines: prints elements of bintree
- * \param struct lnode *lineNode) is a bintree to print 
+/* printWordLines: prints elemencts of bintree
+ * \param struct lnode *lineNode is a bintree to print 
 */
 void printWordLines(struct lnode *lineNode);
 
@@ -169,4 +179,26 @@ void printLineNumber(struct line * line);
  * \return 1 if the word in the array, otherweise 0*/
 int isWordinArr(char **arr, char *word, int length);
 
+
+/* hash: form hash value for string s 
+ * \param char* s is an input string to be hashed
+ * \return unsigned hash number*/
+unsigned hash(char *s);
+
+/* lookup: looks for s in hashtab 
+ * \param char *s string of the target name
+ * \return pointer to struct nlist where the name *s is stored */
+struct nlist * lookup(char *s);
+
+/* install: put (name, defn) in hashtab 
+ * \param char* name the name to be added
+ * \param char* defn is the definition to be added
+ * \return a new head of the linked list*/
+struct nlist *install(char *name, char *defn);
+
+/* ubdef: remove definition and name
+ * \param char* name the name to be added
+ * \param char* defn is the definition to be added
+ * \return 1 if the node is deleted, 0 otherweise*/
+uint8_t undef(char *name, char *defn);
 #endif

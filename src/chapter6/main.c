@@ -125,7 +125,29 @@ int main(int argc, char *argv[])
     printf("\n");
 
     printWordLines(line);
-
     fclose(filep);
+
+    printf("\n\n ~~~~~~~~~~ EXERCISE 6.2 ~~~~~~~~~~\n");
+    
+    struct nlist *np;
+    char *name = "IN";
+    char *defn = "hundred";
+    int retVal;
+    
+    np = install("IN", "hundred");
+    if (np != NULL)
+        printf("name: %s \ndefn: %s\n", np->name, np->defn);
+    else
+        printf("error: np couldnot be initialized\n");
+
+    np = install("NI", "two hundred");
+    retVal = undef(name, defn);
+
+    np = lookup("NI");
+    if (np != NULL)
+        printf("name: %s \ndefn: %s\n", np->name, np->defn);
+    else
+        printf("error: np couldnot be initialized\n");
+
     return 0;
 }
