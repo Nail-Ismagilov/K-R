@@ -9,18 +9,22 @@ char buf[BUFFSIZE]; /* buffer for ungetch */
 int bufp = 0;       /* next free position in buf */
 
 
-int getword(char *word, int lim, FILE * filep)
+int getword(char *word, int lim, FILE * filep, char *space)
 {
     // printf("I am in the getword....\n");
     int c;
+
     char *w = word;
     while ((c = getchf(filep)) == ' ')
-        ;
+        *(space++) = c;
+    *space = '\0';
+
     if (c != EOF)
         *w++ = c;
-    if ( !isalpha(c) )
+
+    if ( !isalnum(c) )
     {
-        if(c != '#' || c!= '_')
+        if(c != '_')
         {
             *w = '\0';
             return c;
@@ -40,7 +44,8 @@ int getword(char *word, int lim, FILE * filep)
     }
     *w = '\0';
 
-    if (word[0] == '#' || word[0] == '_')
+    // if (word[0] == '#' || word[0] == '_')
+    if (word[0] == '_')                         /*define is not a  variable*/
         for(int i = 0; word[i] != '\0';i++)
             word[i] = word[i+1];
 
@@ -115,43 +120,55 @@ void ungetchf(char c)
         buf[bufp++] = c;
 }
 
-void setstatus(int n, int *prevChar, int *token)
+void setstatus(int n, int const *prevChar, int *status)
 {
     switch(n)
     {
         case '/':
-            switch (*token)
+            switch (*status)
             {
+                case DEFINE:
+                    *status = NOT_DEFINED;
+                    break;
                 case NOT_DEFINED:
                     if (*prevChar == '/')
                     {
-                        *token = COMMENT;
+                        *status = COMMENT;
                     }
                     break;
                 case MULTIPLE_LINE_COMMENT:
                     if (*prevChar == '*')
                     {
-                        *token = KEYWORD;
+                        *status = CODE;
                     }
                     break;
-                case KEYWORD:
-                    *token = NOT_DEFINED;
+                case CODE:
+                    *status = NOT_DEFINED;
                     break;
                 default:
                     break;
             }
             break;
         case '*':
-            switch (*token)
+            switch (*status)
             {
+                case DEFINE:
+                    *status = NOT_DEFINED;
+                    break;
                 case NOT_DEFINED:
                     if (*prevChar == '/')
                     {
-                        *token = MULTIPLE_LINE_COMMENT;
+                        *status = MULTIPLE_LINE_COMMENT;
                     }
                     break;
-                case KEYWORD:
-                    *token = KEYWORD;
+                case CODE:
+                    *status = CODE;
+                    break;
+                case  MULTIPLE_LINE_COMMENT:
+                if (*prevChar != '/')
+                    {
+                        *status = MULTIPLE_LINE_COMMENT;
+                    }
                     break;
                 default:
                     break;
@@ -159,36 +176,62 @@ void setstatus(int n, int *prevChar, int *token)
             break;
 
         case '\"':
-            switch (*token)
+            switch (*status)
             {
-                case KEYWORD:
+                case DEFINE:
+                    *status = NOT_DEFINED;
+                    break;
+                case CODE:
                     if (*prevChar != '\\')
-                        *token = STRING;
+                        *status = STRING;
                     break;
                 case STRING:
                     if (*prevChar != '\\')
-                        *token = KEYWORD;
+                        *status = CODE;
                     break;
                 default:
                     break;
             }
             break;
         case '\n':
-            switch (*token)
+            switch (*status)
             {
-                
+                case DEFINE:
+                    *status = CODE;
+                    break;
                 case COMMENT:
-                    *token = KEYWORD;
+                    *status = CODE;
+                    break;
                 case STRING:
-                case KEYWORD:
+                case CODE:
                 case MULTIPLE_LINE_COMMENT:
                 default:
                     break;
             }
             break;
+        case '#':
+            switch (*status)
+            {
+                case CODE:
+                    *status = DEFINE;
+                    break; 
+                case DEFINE:
+                    *status = NOT_DEFINED;
+                    break;
+                case COMMENT:
+                    break;
+                case STRING:
+                    break;
+                case MULTIPLE_LINE_COMMENT:
+                    *status = MULTIPLE_LINE_COMMENT;
+                    break;
+                default:
+                    break;
+            }
+            break;
         default:
-            if (NOT_DEFINED == *token)
-                *token = KEYWORD;
+            if (NOT_DEFINED == *status)
+                *status = CODE;
             break;
     }
 }

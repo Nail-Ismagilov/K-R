@@ -3,6 +3,11 @@
 
 #define NKEYS   (sizeof (keytab)/sizeof(struct key))
 
+
+char *file = "Text_files\\code.txt";                /* file containing code */
+
+
+
 /* count C keywords*/
 struct key keytab[] = {
     {"/*", 0},
@@ -51,10 +56,12 @@ int main(int argc, char *argv[])
 {
     int n;
     char word[MAXWORD];
+    char *name[MAXWORD];
+    char *defn[MAXWORD];
+    char space[BUFF];
 
     // struct key *p;
-    char *file = "test.txt";
-    int token = KEYWORD;                /* Current status */
+    int status = CODE;                 /* Current status */
     int prevChar = '\0';               /* previous character */
     int lineNumber = 1;
 
@@ -72,6 +79,8 @@ int main(int argc, char *argv[])
 
 
     FILE * filep;
+
+
     // printf("NKEYS = %lld\n", NKEYS);
     while (--argc > 0 )
     {
@@ -86,15 +95,16 @@ int main(int argc, char *argv[])
     
     filep = fopen(file, "r");
 
-    while ((n = getword(word, MAXWORD, filep)) != EOF)
+
+    while ((n = getword(word, MAXWORD, filep, space)) != EOF)
     {
 
         if (n == '\n')
         {
             lineNumber++;
         }
-            
-        if ((isalpha(word[0])) && (KEYWORD == token || NOT_DEFINED == token))
+
+        if ((isalpha(word[0])) && (CODE == status || NOT_DEFINED == status))
         { 
                 //printf("debug: isalpha true\n\tword: %s\n", word);
                 // wordCopy = my_strdup(word);
@@ -104,50 +114,36 @@ int main(int argc, char *argv[])
         else
         { 
             
-            setstatus(n, &prevChar, &token);
-            // printf("prevChar: %c CurrentChar: %c token %d\n", prevChar, n, token);
-            if (KEYWORD == token)
+            setstatus(n, &prevChar, &status);
+            // printf("prevChar: %c CurrentChar: %c status %d\n", prevChar, n, status);
+            if (CODE == status)
                 prevChar = '\0';
             else
                 prevChar = n;
         }
     
     }
-    
+    fclose(filep);
     // treeprint(root);
 
-    wordroot = group_elements(root, 4); /* grouping elements */
+    // wordroot = group_elements(root, 4); /* grouping elements */
     // group_treeprint(wordroot);          /* print the groups and their elements*/
-    
+
     printf(" count \t\tWORD\t\t\t\tLINE\n");
     for(int i = 0; i<100; i++)
         printf("-");
     printf("\n");
 
     printWordLines(line);
-    fclose(filep);
 
-    printf("\n\n ~~~~~~~~~~ EXERCISE 6.5 ~~~~~~~~~~\n");
-    
-    struct nlist *np;
-    char *name = "IN";
-    char *defn = "hundred";
-    int retVal;
-    
-    np = install("IN", "hundred");
-    if (np != NULL)
-        printf("name: %s \ndefn: %s\n", np->name, np->defn);
-    else
-        printf("error: np couldnot be initialized\n");
 
-    np = install("NI", "two hundred");
-    retVal = undef(name, defn);
+    exercise6_5();
+    exercise6_6();
 
-    np = lookup("NI");
-    if (np != NULL)
-        printf("name: %s \ndefn: %s\n", np->name, np->defn);
-    else
-        printf("error: np couldnot be initialized\n");
+    // CLOSING OPEN FILES
+
+
+
 
     return 0;
 }

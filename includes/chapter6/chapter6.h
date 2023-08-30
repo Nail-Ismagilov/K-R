@@ -9,7 +9,9 @@
 
 #define MAXWORD  100
 #define HASHSIZE    101
+#define BUFF    200
 
+// char SPACE_BUFF[BUFF];
 static struct nlist *hashtab[HASHSIZE];     /* pointer table */
 
 struct key{ 
@@ -54,7 +56,12 @@ struct nlist {       /*table entry: */
     char *defn;             /* replacement text */
 };
 
-enum {KEYWORD = 0, STRING, COMMENT, MULTIPLE_LINE_COMMENT, NOT_DEFINED};
+enum { CODE = 0, 
+       STRING, 
+       COMMENT, 
+       MULTIPLE_LINE_COMMENT, 
+       DEFINE, 
+       NOT_DEFINED };
 
 /* binsearch: find word in tab[0]..tab[n-1] 
  * \param char* word a string, that should be checked 
@@ -74,7 +81,7 @@ struct key * pbinsearch(char * word, struct key * tab, int n);
 
 
 /* getword: get neyt word or c*/
-int getword(char *, int, FILE *);
+int getword(char *, int, FILE *, char * space);
 
 /* getchf: get a character from a file 
  * \param FILE* file is a file from the chracter has to be read
@@ -88,8 +95,8 @@ void ungetchf(char c);
 /* setstatus: sets a status of a current code part
  * \param int n is a current character came from the reading file
  * \param int* precChar is a previous character
- * \param int* token is a current status which should be changed or not */
-void setstatus(int n, int *prevChar, int *token);
+ * \param int* status is a current status which should be changed or not */
+void setstatus(int n, int const *prevChar, int *status);
 
 /* addtree: add a node with w, at or below p
  * \param struct tnode *p is the node;
@@ -201,4 +208,10 @@ struct nlist *install(char *name, char *defn);
  * \param char* defn is the definition to be added
  * \return 1 if the node is deleted, 0 otherweise*/
 uint8_t undef(char *name, char *defn);
+
+    
+    
+void exercise6_5(void);
+
+void exercise6_6(void);
 #endif
