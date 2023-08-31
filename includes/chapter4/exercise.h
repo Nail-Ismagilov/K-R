@@ -4,6 +4,12 @@
 #include <stdint.h>
 #include <stdio.h>
 
+double atof(char s[]);
+/* atof: convert array of characters to float number
+ *
+ * @param char s[] - array where the character of a number stored 
+ **/
+
 void getarray(char s[], int len);
 /* getarray: stores input to an array and prints it
  *
@@ -11,7 +17,7 @@ void getarray(char s[], int len);
  * @param int len - size of the array  
  **/
 
-void print_array(char arr[]);
+void print_array(char const arr[]);
 /* print_array: prints array to a terminal
  *
  * @param arr - an array which should be printed

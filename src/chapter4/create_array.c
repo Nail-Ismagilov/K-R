@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-void print_array(char arr[])
+void print_array(char const arr[])
 {
 	int i;
 	printf("+++The given array: ");

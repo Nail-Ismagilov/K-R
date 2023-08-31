@@ -1,26 +1,78 @@
+/*
+ * The programm tail is showing last n given lines, and sorts the entire file alpha-/numerecly
+ * command '-n': shows the last n lines of a file 
+ * command '-f': foldable
+ * command '-r': reverses the linse in the file allowing to show first n lines
+ *
+ */
+
 #include <stdio.h>
+//#include <stdlib.h>
+#include <string.h>
 #include "chapter5.h"
+#include "exercise.h"
 
+#define MAXLINE    1000
+#define MAXLINES   1000
 #define MAX_LENGTH 50
+#define SIZE       20
 
-int main()
+char * lineptr[MAXLINES];                       /* pointers to text lines */
+// int readlines(char *lineptr[], int nlines);
+// void writelines(char *lineptr[], int nlines);
+
+int numcmp(char *, char *);
+
+/* sort input lines*/
+int main(int argc, char *argv[])
 {
-    printf("\n\n********************************* CHAPTER 5 *********************************\n\n");
-   // printf("********************************* Exercise %d *********************************\n\n", exercise[a]);
+    
+    int numeric = 0, reverse = 0, foldable = 0;
 
-    char str1[MAX_LENGTH] = "first string";
-    char str2[] = "_second string";
+    char *file;
+    char filePattern[] = ".txt";
+    int number = 100, nlines = 0;
+    int i = 0;
+        
 
-    printf("is str2 at the end of str1? (1-YES; 0-NO): %d\n", strend(str1, str2));
-    strcopy(str1, str2, 20);
 
-
-    printf("str1[]: ");
-    for(int i = 0; str1[i] != '\0'; i++)
+    
+    while (--argc >= 0 )
     {
-        printf("%c", str1[i]);
+   
+        // printf("argv[%d]: %s\n", i, argv[i]);
+
+        if (strcmp(argv[i], "-n") == 0)
+        {
+            numeric = 1;
+        }
+        else if ((strcmp(argv[i], "-r") == 0))
+        {
+    	    reverse = 1;
+        }
+        else if ((strcmp(argv[i], "-f") == 0))
+        {
+    	    foldable = 1;
+        }    
+        else if (strend(argv[i], filePattern) == 1)
+        {    
+            file = argv[i];
+            //printf("found a file %s\n", file);
+            nlines = read_file(lineptr, file);
+            //print_tail(nlines, number, lineptr);
+        }
+
+        i++;
     }
-        printf("\nis str2 at the end of str1? (1-YES; 0-NO): %d\n", strend(str1, str2));
+    if (nlines >= 0)
+        {            
+            
+            qsort((void **) lineptr, 0, nlines-1,
+                    (int(*)(void *, void *))(numeric ? numcmp : (foldable ? strcmp_f : strcmp)), reverse); 
+        }
+
+    print_tail(nlines, number, lineptr);
 
     return 0;
 }
+

@@ -38,16 +38,17 @@ long long int atoi (char *s){
 
 
 
-void reverse(char *s)
+void reverse(char **s)
 {
 	int length;
-	char *t;
-
-	for (length = 0; *s!= '\0'; length++, s++)
+	char *t = NULL;
+    
+	for (length = 0; **s!= '\0'; length++, *s++)
         ;
-	for (; 0 < length; length--, s--, t++) {
-	    *t = *s;
+	for (; 0 < length; length--, *s--, t++) {
+	    *t = **s;
 	}
 
-    s = t;
+    if (t != NULL)
+        *s = t;
 }

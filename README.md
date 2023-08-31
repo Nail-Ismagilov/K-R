@@ -7,3 +7,6 @@ to build necessery chapters solution
 
 to clean all build files
   make clean
+
+Chapter 5 - declarator exercise:
+   gcc  dcl.c -Wall -O0 -std=c99 -g -o dcl.exe

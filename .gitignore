@@ -1,0 +1,11 @@
+./.vscode
+.vscode/*
+*.o
+*.exe
+*.d
+*.out
+*.asm
+*.map
+.vscode/configurationCache.log
+.vscode/dryrun.log
+.vscode/targets.log

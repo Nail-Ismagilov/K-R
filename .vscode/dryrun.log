@@ -1,6 +1,0 @@
-make.exe --dry-run --keep-going --print-directory
-make: Entering directory '/c/Users/Nail Ismagilov/OneDrive/Dokumente/Embedded C/K-R'
-gcc  -g -Werror   -o program.exe
- 
-make: Leaving directory '/c/Users/Nail Ismagilov/OneDrive/Dokumente/Embedded C/K-R'
- 
