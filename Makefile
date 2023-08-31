@@ -74,4 +74,3 @@ compile-all: $(OBJS) $(PRPS) $(ASMS)
 clean: 
 	rm -f src/$(CHAPTER)/$(OBJS) src/$(CHAPTER)/$(PRPS) src/$(CHAPTER)/$(ASMS) src/$(CHAPTER)/$(DEPS) *.out $(TARGET).exe \
 	$(TARGET).asm $(TARGET).map src/$(CHAPTER)/*.o src/$(CHAPTER)/*.exe
-
