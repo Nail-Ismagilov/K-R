@@ -210,6 +210,11 @@ struct nlist *install(char *name, char *defn);
  * \return 1 if the node is deleted, 0 otherweise*/
 uint8_t undef(char *name, char *defn);
 
+/* exerise6_1: 
+ *  getword which handle underscores, string constants,
+ *  comments, or preprocessor control lines*/
+void exerise6_1(void);
+
 /* exercise6_5: 
  *  there is a function undef, that removes 
  *  a name and definittion from the table maintained by

@@ -54,6 +54,7 @@ SOURCES =	src/chapter5/exercise_5_3-strcat.c 		\
 			src/chapter6/bintree.c 					\
 			src/chapter6/string_extended.c			\
 			src/chapter6/hashtable.c				\
+			src/chapter6/exercise-6_1.c				\
 			src/chapter6/exercise-6_2-6_3.c			\
 			src/chapter6/exercise-6_5.c				\
 			src/chapter6/exercise-6_6.c				\
