@@ -18,19 +18,20 @@ int main()
     char longest[MAXLINE];
 
     max = 80;
-    while ((len = getlines(line, MAXLINE)) > 0)
-    
-    {
 
-	len = checkTrailingSpace(line, len);
-	if (checkBlank(line, len)) {
-		reverse(line);
-		printf("%s", line);
-    	}
+    while ((len = getlines(line, MAXLINE)) > 0)   
+    {
+        len = checkTrailingSpace(line, len);
+        
+        if (checkBlank(line, len)) 
+        {
+            reverse(line);
+            printf("%s", line);
+        }
     }
 	
     if (max > 0)
-	printf("%s", longest);
+	    printf("%s", longest);
     
     return(0);
 }
@@ -39,11 +40,14 @@ int checkTrailingSpace(char s[], int length) {
     int new_length, i;
 
     new_length = length;
-    for (i = 0; i < length; i++ ) {
-	    if (((s[i] == ' ') && (s[i+1] == ' ')) || ((s[i] == '\t') && (s[i+1] == '\t'))) {
-		deleteTrailingSpace(s, i);
-		--new_length;
-		--i;
+
+    for (i = 0; i < length; i++ ) 
+    {
+	    if (((s[i] == ' ') && (s[i+1] == ' ')) || ((s[i] == '\t') && (s[i+1] == '\t'))) 
+        {
+            deleteTrailingSpace(s, i);
+            --new_length;
+            --i;
 	    }
     }
 
@@ -51,21 +55,24 @@ int checkTrailingSpace(char s[], int length) {
 }
 
 void deleteTrailingSpace (char c[], int i) {
-    for(; c[i]!='\0'; i++)
-	c[i] = c[i+1];
+    for(; c[i] != '\0'; i++)
+	    c[i] = c[i+1];
 }
 
 int checkBlank(char s[], int length) {
     int c, i;
     c = 0;
-    for (i=0; i<length; i++) {
-	if (s[i]!='\n' && s[i]!=' ' && s[i]!='\t' && s[i]!=EOF)
-		++c;	
+
+    for (i=0; i<length; i++) 
+    {
+        if (s[i] != '\n' && s[i] != ' ' && s[i] != '\t' && s[i] != EOF)
+            ++c;	
     }
+
     if (c==0)
-	return BLANK;
+	    return BLANK;
     else 
-	return NOT_BLANK;
+	    return NOT_BLANK;
 
 }
 
@@ -74,7 +81,7 @@ int getlines(char s[], int lim){
 
     for (i=0; (c=getchar()) !=EOF && c!='\n'; ++i)    
 	    s[i] = c;
-        
+
     if (c == '\n') 
     {
         s[i] = c;
@@ -89,9 +96,11 @@ int getlines(char s[], int lim){
 void reverse(char s[]) {
     int i,c;
     char temp;
+
     for (i=0; s[i]!='\0'; ++i) {}
 
-    for (c=0; c<(i/2); ++c){
+    for (c=0; c<(i/2); ++c)
+    {
         temp = s[c];
         s[c] = s[i-c-2];
 	    s[i-c-2] = temp;

@@ -1,7 +1,0 @@
-{
-    "makefile.extensionOutputFolder": "./.vscode",
-    "files.associations": {
-        "helperfunction.h": "c",
-        "exercise.h": "c"
-    }
-}

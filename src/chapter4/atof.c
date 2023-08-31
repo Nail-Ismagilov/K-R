@@ -4,7 +4,7 @@
 
 double atof(char s[]){
     double val, power, exp = 1.0;
-    int i, sign, eSign, ePos;
+    int i, sign, eSign;
     char sci_n[3] = {'e','-','\0'};
     char sci_p[3] = {'e','+','\0'};
 
