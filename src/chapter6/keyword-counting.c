@@ -27,6 +27,7 @@ int getword(char *word, int lim, FILE * filep, char *space)
         if(c != '_')
         {
             *w = '\0';
+            // printf("debug: character c: %c\n", c);
             return c;
         }
     }
@@ -139,7 +140,7 @@ void setstatus(int n, int const *prevChar, int *status)
                 case MULTIPLE_LINE_COMMENT:
                     if (*prevChar == '*')
                     {
-                        *status = CODE;
+                        *status = END_ML_COMMENT;
                     }
                     break;
                 case CODE:
@@ -200,6 +201,9 @@ void setstatus(int n, int const *prevChar, int *status)
                     *status = CODE;
                     break;
                 case COMMENT:
+                    *status = CODE;
+                    break;
+                case END_ML_COMMENT:
                     *status = CODE;
                     break;
                 case STRING:

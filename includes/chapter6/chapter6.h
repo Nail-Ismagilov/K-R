@@ -56,12 +56,13 @@ struct nlist {       /*table entry: */
     char *defn;             /* replacement text */
 };
 
-enum { CODE = 0, 
-       STRING, 
-       COMMENT, 
-       MULTIPLE_LINE_COMMENT, 
-       DEFINE, 
-       NOT_DEFINED };
+enum { CODE                  = 0, 
+       STRING                = 1, 
+       COMMENT               = 2, 
+       MULTIPLE_LINE_COMMENT = 3, 
+       DEFINE                = 4,
+       NOT_DEFINED           = 5, 
+       END_ML_COMMENT        = 6 };
 
 /* binsearch: find word in tab[0]..tab[n-1] 
  * \param char* word a string, that should be checked 

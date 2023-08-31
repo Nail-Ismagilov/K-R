@@ -62,20 +62,4 @@ int readLine(char *lineptr[], int maxlines)
             return -1;
         else 
         {
-            line[len-1] = '\0';/
-            strcpy(p, line);
-            lineptr[nlines++] = p;
-        }
-    }
-    return 0;
-}
-
-
-int writeLines(char *lineptr[], int nlines)
-{
-    int i;
-
-    for(i = 0; i < nlines; i++)
-        printf("%s\n", lineptr[i]);
-    return i;
-}
+            line[len-1] = '\0';

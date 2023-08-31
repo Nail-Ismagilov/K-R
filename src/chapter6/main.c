@@ -56,8 +56,6 @@ int main(int argc, char *argv[])
 {
     int n;
     char word[MAXWORD];
-    char *name[MAXWORD];
-    char *defn[MAXWORD];
     char space[BUFF];
 
     // struct key *p;

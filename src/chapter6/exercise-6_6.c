@@ -3,7 +3,7 @@
 
 void exercise6_6()
 {
-    printf("\n\n ~~~~~~~~~~ EXERCISE 6.5 ~~~~~~~~~~\n");
+    printf("\n\n ~~~~~~~~~~ EXERCISE 6.6 ~~~~~~~~~~\n");
 
 
     /* file location */
@@ -13,8 +13,9 @@ void exercise6_6()
     int n;
     char space[BUFF];
     char word[MAXWORD];
-    char *name[MAXWORD];
-    char *defn[MAXWORD];
+    char name[MAXWORD];
+    char defn[MAXWORD];
+
     struct nlist *np;
     char *wordCopy;
 
@@ -25,6 +26,7 @@ void exercise6_6()
     // struct key *p;
     int status = CODE;                 /* Current status */
     int prevChar = '\0';               /* previous character */
+
     np = NULL;
 
 
@@ -34,6 +36,8 @@ void exercise6_6()
     while ((n = getword(word, MAXWORD, filep, space)) != EOF)
     {
         setstatus(n, &prevChar, &status);
+
+        // printf("debug: prevChar = %c\n       status = %d\n -------\n", prevChar, status);
 
         if (DEFINE == status && isalpha(word[0]))
         {
@@ -45,7 +49,8 @@ void exercise6_6()
             install(name, defn);
         }
 
-        if ( (CODE == status) || STRING == status )
+        
+        if ( CODE == status || STRING == status )
         {
             wordCopy = my_strdup(word);
             if (((np = lookup(wordCopy)) != NULL) && CODE == status)
@@ -61,13 +66,15 @@ void exercise6_6()
                 prevChar = '\0';
             else
                 prevChar = n;
-            // printf("debug: prevChar = %c\n", prevChar);
+                // hiddenElement = n[1];
+           
         }
+        prevStatus = status;
     }
 
     // CLOSING OPEN FILES
     fclose(prepfilep);
     fclose(filep);
     printf("status: success - ouptut in %s\n", prepfile);
-    printf(" ~~~~~~~~~~ EXERCISE 6.5 ~~~~~~~~~~\n\n");
+    printf(" ~~~~~~~~~~ EXERCISE 6.6 ~~~~~~~~~~\n\n");
 }
