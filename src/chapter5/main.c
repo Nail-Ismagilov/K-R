@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     char *file;
     char filePattern[] = ".txt";
-    int number = 100, nlines;
+    int number = 100, nlines = 0;
     int i = 0;
         
 
@@ -66,8 +66,9 @@ int main(int argc, char *argv[])
     }
     if (nlines >= 0)
         {            
+            
             qsort((void **) lineptr, 0, nlines-1,
-                    (int(*)(void *, void *))(numeric ? numcmp : (foldable ? strcmp_f : strcmp)), reverse);
+                    (int(*)(void *, void *))(numeric ? numcmp : (foldable ? strcmp_f : strcmp)), reverse); 
         }
 
     print_tail(nlines, number, lineptr);

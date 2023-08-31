@@ -18,12 +18,12 @@ int day_of_year(int year, int month, int day)
 
 void month_day(int year, int yearday, int *pmonth, int *pday)
 {
-    int i, leap;
+    int leap;
     if ((leap = year%4 == 0) && (year%100 != 0 || year%400 == 0))
         leap = 1;
     //Error handling
     if ((leap && yearday <= 366) || (yearday <= 365)){   
-        for (i = 1; yearday > daytab[leap][i]; i++)
+        for (int i = 1; yearday > daytab[leap][i]; i++)
         {
             yearday -= daytab[leap][i];
         }

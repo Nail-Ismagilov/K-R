@@ -210,9 +210,23 @@ struct nlist *install(char *name, char *defn);
  * \return 1 if the node is deleted, 0 otherweise*/
 uint8_t undef(char *name, char *defn);
 
-    
-    
+/* exercise6_5: 
+ *  there is a function undef, that removes 
+ *  a name and definittion from the table maintained by
+ *  lookup and install */    
 void exercise6_5(void);
 
+/* exercise6_6: 
+ *  Simple version of the 'define processor */
 void exercise6_6(void);
+
+/* exercise6_2_6_3: 
+ *  6.2 - reads C programm and prints in alphabetic order 
+ *  each group of variablenames that are identical in the 
+ *  last 6 chars.
+ *  6.3 - cross-referencer that prints a list of all words 
+ *  in a document, and for each word , a list of the line 
+ *  numbeers on wich it occurs*/
+void exercise6_2_6_3(void);
+
 #endif

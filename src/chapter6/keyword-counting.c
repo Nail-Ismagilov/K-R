@@ -59,13 +59,14 @@ int getword(char *word, int lim, FILE * filep, char *space)
 int binsearch(char *word, struct key tab[], int n)
 {
     // printf("enter binsearch...\n");
-    int cond;
+    
     int low, high, mid;
 
     low = 0;
     high = n - 1;
     while (low <= high)
     {
+        int cond;
         mid = (low + high) / 2;
         // printf("word: %s\ntab.word: %s\n", word, tab[mid].word);
         // printf("Is word and tab.word equal: %s\n", (strcmp(word, tab[mid].word)) ? "NO" : "YES" );
@@ -84,16 +85,14 @@ int binsearch(char *word, struct key tab[], int n)
 struct key * pbinsearch(char * word, struct key * tab, int n)
 {
 
-    int cond;
-
-
     struct key *high = &tab[n];
     struct key *low = &tab[0]; 
     struct key *mid;
 
-
     while (low < high)
     {
+        int cond;
+        
         mid = low + (high-low) / 2;
         if ((cond = strcmp(word, mid->word)) < 0)
             high = mid;

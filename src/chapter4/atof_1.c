@@ -6,11 +6,11 @@
 void reverse(char s[])
 {
 	int length, i;
-	char temp;
+
 
 	for (length = 0; s[length] != '\0'; length++) {}
-	for (i = 0, length--; i < length; i++, length--) {
-		temp = s[i];
+	for (i = 0, length-- ; i < length; i++, length--) {
+		char temp = s[i];
 		s[i] = s[length];
 		s[length] = temp;
 	}

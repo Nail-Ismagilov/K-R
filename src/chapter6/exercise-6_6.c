@@ -69,7 +69,6 @@ void exercise6_6()
                 // hiddenElement = n[1];
            
         }
-        prevStatus = status;
     }
 
     // CLOSING OPEN FILES

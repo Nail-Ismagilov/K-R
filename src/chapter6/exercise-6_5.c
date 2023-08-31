@@ -1,5 +1,6 @@
 #include "chapter6.h"
 
+
 void exercise6_5()
 {
     printf("\n\n ~~~~~~~~~~ EXERCISE 6.5 ~~~~~~~~~~\n");
