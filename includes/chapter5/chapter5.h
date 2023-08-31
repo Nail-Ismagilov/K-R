@@ -59,7 +59,7 @@ void mygetline(char s[], int lim);
  * \return n - integer value converted from array s
  */
 
-void reverse(char s[]);
+void reverse(char *s[]);
 /* reverse: reverse elements of string s 
  * \param s[]  an initial string which should be converted
  * 

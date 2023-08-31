@@ -17,7 +17,7 @@ void getarray(char s[], int len);
  * @param int len - size of the array  
  **/
 
-void print_array(char arr[]);
+void print_array(char const arr[]);
 /* print_array: prints array to a terminal
  *
  * @param arr - an array which should be printed

@@ -82,10 +82,10 @@ char *my_strdup(char *s)   /* make a duplicate of s */
 
 struct wordgroup *addgroup(struct wordgroup *p, char *w, int n)
 {
-    int cond;
     int length = strlen(w);
     if (length > n)
     {
+        int cond;
         // printf("debug: into addgroup\n");
         if (p == NULL) {        /* a new word is arrived */
             //printf("debug: p is NULL");
@@ -174,7 +174,7 @@ void group_treeprint (struct wordgroup *p)
 
 struct line *addline(struct line *lines, int nline)
 {
-    int cond;
+
   //   printf("debug: I am in the addline\n");
     if (lines == NULL)      /* a new line os arrived */
     {
@@ -183,7 +183,7 @@ struct line *addline(struct line *lines, int nline)
         lines->n = nline; 
         lines->left = lines->right = NULL;  
     }
-    else if ((cond = (lines->n > nline)) < 0)      /* less than into left subtree */
+    else if (((lines->n) > nline)? 1 : 0)      /* less than into left subtree */
     {
         lines->left = addline(lines->left, nline);
       //   printf("debug: addtreeline into left\n");
@@ -200,11 +200,12 @@ struct line *addline(struct line *lines, int nline)
 
 struct lnode *addtreeline(struct lnode *p, char *w, int line)
 {
-    int cond;
+    
   //   printf("debug: I am in the add tree\n");
     // printf("debug: into addtree\n");
     if (isWordinArr(NOISY_WORDS, w, arrLength) == 0)
-    {
+    {   
+        int cond;
         if (p == NULL) {        /* a new word is arrived */
 
         //   printf("debug: create line tree - p is NULL\n");

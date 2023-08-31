@@ -5,7 +5,7 @@ int const * daytab[] = {{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
 
 int my_day_of_year(int year, int month, int day)
 {
-    int i, leap;
+    int leap;
     int *p;
     leap = ((year%4 == 0 && year%100 !=0) || (year % 400 == 0));
     p = &daytab[leap][1];
@@ -20,16 +20,18 @@ int my_day_of_year(int year, int month, int day)
 
 void my_month_day(int year, int yearday, int *pmonth, int *pday)
 {
-    int i, leap;
+    int leap;
     int *p;
     leap = year%4 == 0 && year%100 != 0 || year%400 == 0;
     
     p = &daytab[leap][1];
     //Error handling
-    if (leap && yearday <= 366 || yearday <= 365){   
+    if (leap && yearday <= 366 || yearday <= 365){  
+        int i = 0;
         while (yearday > *p)
         {
             yearday -= *p++;
+            i++;
         }
         *pday = yearday;
         *pmonth = i;

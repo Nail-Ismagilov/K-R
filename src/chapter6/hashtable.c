@@ -31,10 +31,11 @@ struct nlist * lookup(char *s)
 struct nlist *install(char *name, char *defn)
 {
     struct nlist *np;
-    uint8_t hashval;
+    
 
     if ((np = lookup(name)) == NULL)    /* not found */
     {
+        uint8_t hashval;
         np = (struct nlist *)malloc(sizeof(*np));
         if (np == NULL || (np->name = strdup(name)) == NULL)
             return NULL;
@@ -64,7 +65,7 @@ uint8_t undef(char *name, char *defn)
 
     //printf("debug_undef: hashval = %d\n", hashval);
 
-    if ((np = lookup(name)) == NULL)
+    if ((lookup(name)) == NULL)
         return retVal;
 
     if (strcmp(hashtab[hashval]->name, name) == 0)
