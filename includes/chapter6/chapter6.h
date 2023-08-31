@@ -19,34 +19,38 @@ struct key{
     int count;
 } ;  
 
+typedef struct tnode *t_treeptr;
 struct tnode{               /* the tree node: */
     char *word;             /* points to the text */
     int count;              /* number of occurences */
-    struct tnode *left;     /* left child */
-    struct tnode *right;    /* right child */
+    t_treeptr left;         /* left child */
+    t_treeptr right;        /* right child */
 };
 
+typedef struct line *t_ltreeptr;
 struct line{
     int n;
-    struct line *left;
-    struct line *right;
+    t_ltreeptr left;
+    t_ltreeptr right;
 };
 
+typedef struct lnode *t_lntreeptr;
 struct lnode{               /* the tree node: */
     char *word;             /* points to the text */
     int count;              /* number of occurences */
-    struct line *line;      /* lines where the word occurs*/
-    struct lnode *left;     /* left child */
-    struct lnode *right;    /* right child */
+    t_ltreeptr line;        /* lines where the word occurs*/
+    t_lntreeptr left;       /* left child */
+    t_lntreeptr right;      /* right child */
 };
 
+typedef struct wordgroup *t_wtreeptr;
 
-struct wordgroup{              /* group of words with same last 6 chars*/
-    char *group;               /* points to the name of the group */
-    struct tnode * word;        /* points to the words database */
-    int count;                 /* counts number of words in the group*/
-    struct wordgroup *left;    /* left child */
-    struct wordgroup *right;   /* right child */
+struct wordgroup{           /* group of words with same last 6 chars*/
+    char *group;            /* points to the name of the group */
+    t_treeptr word;         /* points to the words database */
+    int count;              /* counts number of words in the group*/
+    t_wtreeptr left;        /* left child */
+    t_wtreeptr right;       /* right child */
 };
 
 
